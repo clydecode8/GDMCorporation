@@ -139,9 +139,9 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-	glLoadIdentity();
 
-	glRotatef(1, 1,1,1);
+	glLoadIdentity();
+	glRotatef(1, 1,1,1); //test
 	glScalef(0.5f, 0.5f, 0.5f); // Scale the cube to half of its original size
 	drawCube();
 
