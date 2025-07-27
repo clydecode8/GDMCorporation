@@ -1,0 +1,133 @@
+/* Philosophy Page Styles */
+.philosophy-page {
+  background: #fff;
+  min-height: 100vh;
+  padding-top: 4rem;
+  width: 100%;
+}
+
+.philosophy-bg {
+    background: url('../../assets/philbg.png') center/cover no-repeat fixed;
+    opacity: 1;
+}
+
+
+
+.philosophy-layout {
+  min-height: calc(100vh - 4rem);
+  width: 100%;
+  overflow: hidden;
+}
+
+.philosophy-content {
+  flex: 1;
+  padding: 4rem 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50%;
+}
+
+.philosophy-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+
+.philosophy-text {
+  max-width: 600px;
+}
+
+.philosophy-text p {
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.philosophy-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #000;
+  overflow: hidden;
+}
+
+.architectural-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 80vh;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Responsive Adjustments for Philosophy Page */
+@media (max-width: 1024px) {
+  .philosophy-layout {
+    flex-direction: column;
+  }
+
+  .philosophy-content {
+    max-width: 100%;
+    padding: 3rem 2rem;
+    order: 1;
+  }
+
+  .philosophy-image {
+    min-height: 40vh;
+    order: 2;
+    padding: 1rem;
+  }
+
+  .architectural-image {
+    max-height: 50vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .philosophy-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .philosophy-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .philosophy-text p {
+    font-size: clamp(0.9rem, 4vw, 1rem);
+  }
+
+  .philosophy-image {
+    min-height: 35vh;
+    padding: 0.8rem;
+  }
+
+  .architectural-image {
+    max-height: 40vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .philosophy-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .philosophy-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .philosophy-image {
+    min-height: 30vh;
+    padding: 0.5rem;
+  }
+
+  .architectural-image {
+    max-height: 35vh;
+  }
+} 

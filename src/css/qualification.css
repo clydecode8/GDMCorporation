@@ -1,0 +1,156 @@
+/* Qualification Page Styles */
+.qualification-page {
+  background: #fff;
+  min-height: 100vh;
+  padding-top: 4rem;
+  width: 100%;
+}
+
+.qualification-bg {
+  background: url('../../assets/GDM-PORTFOLIO.pdf.png') center center/cover no-repeat;
+  opacity: 0.1;
+}
+
+.qualification-overlay {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+}
+
+.qualification-layout {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.qualification-header {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.qualification-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.certificates-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.certificate-card {
+    flex: 0 1 600px; /* Increased from 500px by 20% */
+    max-width: 600px;
+    width: 600px;
+    height: 720px; /* Increased from 600px by 20% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+.certificate-image {
+    max-height: 660px; /* Increased from 550px by 20% */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Responsive Adjustments for Qualification Page */
+@media (max-width: 1024px) {
+  .qualification-layout {
+    padding: 1.5rem;
+  }
+
+  .certificates-container {
+    gap: 1.5rem;
+  }
+
+  .certificate-card {
+    flex: 0 1 480px; /* Increased from 400px by 20% */
+    max-width: 480px;
+    width: 480px;
+    height: 600px; /* Increased from 500px by 20% */
+  }
+
+  .certificate-image {
+    max-height: 540px; /* Increased from 450px by 20% */
+  }
+}
+
+@media (max-width: 768px) {
+  .qualification-layout {
+    padding: 1rem;
+  }
+
+  .qualification-title {
+    margin-bottom: 2rem;
+  }
+
+  .certificates-container {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .certificate-card {
+    flex: 0 1 420px; /* Increased from 350px by 20% */
+    max-width: 420px;
+    width: 420px;
+    height: 540px; /* Increased from 450px by 20% */
+    margin: 0 auto;
+  }
+
+  .certificate-image {
+    max-height: 480px; /* Increased from 400px by 20% */
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .qualification-layout {
+    padding: 0.8rem;
+  }
+
+  .qualification-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .certificates-container {
+    padding: 0.8rem;
+  }
+
+  .certificate-card {
+    flex: 0 1 360px; /* Increased from 300px by 20% */
+    max-width: 360px;
+    width: 360px;
+    height: 480px; /* Increased from 400px by 20% */
+    padding: 1rem;
+  }
+
+  .certificate-image {
+    max-height: 420px; /* Increased from 350px by 20% */
+    padding: 0.3rem;
+  }
+} 

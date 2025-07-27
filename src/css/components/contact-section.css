@@ -1,0 +1,512 @@
+/* Contact Section Styles */
+.contact-section {
+    background: var(--contact-bg-color, #fff); /* Added fallback color */
+    padding: 6rem 2rem;
+    padding-bottom: 8rem; /* Added extra bottom padding */
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#contact-section-container .contact-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#contact-section-container .contact-content {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.contact-text {
+    flex: 1 1 400px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.contact-text h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #333 0%, #666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-text > p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.feature-item {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    word-break: break-word;
+}
+
+.feature-number {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #7B7EF4;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.feature-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Contact Methods */
+.contact-methods {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem;
+}
+
+.contact-button-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+/* Common Button Styles */
+.email-button,
+.whatsapp-button {
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    flex: 1;
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button-content i {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.button-content span {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.95rem;
+}
+
+/* Email specific styles */
+.email-button .button-content {
+    background: #6366F1;
+}
+
+.email-button .button-content:hover {
+    background: #4F46E5;
+}
+
+/* Email QR Code styles - Uncomment when needed
+.email-button .qr-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.email-button .qr-toggle:hover {
+    background: #eeeeee;
+}
+
+.email-button .qr-hover {
+    height: 0;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: height 0.4s ease;
+    padding: 0;
+}
+
+.email-button.show-qr .qr-hover {
+    height: 220px;
+    padding: 1rem 0;
+}
+*/
+
+
+.qr-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.qr-toggle:hover {
+    background: #eeeeee;
+}
+
+.qr-toggle i {
+    font-size: 1rem;
+}
+
+.qr-hover {
+    height: 0;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: height 0.4s ease;
+    padding: 0;
+}
+
+.qr-hover img {
+    width: 300px;
+    height: 300px;
+    margin: 1rem 0;
+}
+
+.qr-hover span {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* WhatsApp specific styles */
+.whatsapp-button .button-content {
+    background: #25D366;
+}
+
+.whatsapp-button .button-content:hover {
+    background: #22c35e;
+}
+
+/* QR Toggle Button - WhatsApp */
+.whatsapp-button .qr-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.whatsapp-button .qr-toggle:hover {
+    background: #eeeeee;
+}
+
+/* QR Hover Panel - WhatsApp */
+.whatsapp-button .qr-hover {
+    height: 0;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: height 0.4s ease;
+    padding: 0;
+}
+
+.whatsapp-button.show-qr .qr-hover {
+    height: 350px;
+    padding: 1rem 0;
+}
+
+/* Contact Image Flip Card */
+.contact-image {
+    flex: 1 1 300px;
+    min-width: 0;
+    max-width: 100%;
+    perspective: 1000px;
+    height: 700px;
+}
+
+
+.flip-card {
+    position: relative;
+    width: 105%;
+    height: 105%;
+    cursor: pointer;
+    transform: translate(-2.5%, -2.5%);
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front img,
+.flip-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Scroll Up Button */
+.scroll-indicator.scroll-up {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 1s forwards;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.scroll-indicator.scroll-up .scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-left: 2px solid #666;
+    border-top: 2px solid #666;
+    transform: rotate(45deg);
+    margin: 0;
+    animation: bounceUp 2s infinite;
+}
+
+@keyframes bounceUp {
+    0%, 20%, 50%, 80%, 100% {
+        transform: rotate(45deg) translateY(0);
+    }
+    40% {
+        transform: rotate(45deg) translateY(5px);
+    }
+    60% {
+        transform: rotate(45deg) translateY(3px);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes cardClickFeedback {
+    0% { transform: translate(-2.5%, -2.5%) scale(1); }
+    50% { transform: translate(-2.5%, -2.5%) scale(0.98); }
+    100% { transform: translate(-2.5%, -2.5%) scale(1); }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .contact-section {
+        padding: 4rem 1.5rem;
+        padding-bottom: 7rem;
+    }
+
+    .contact-image {
+        height: 350px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 3rem 1rem;
+        padding-bottom: 6rem;
+    }
+
+    .contact-image {
+        height: 300px;
+    }
+
+    .flip-card {
+        width: 100%;
+        height: 100%;
+        transform: none;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-methods {
+        padding: 0;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .button-content {
+        padding: 0.8rem 1.2rem;
+    }
+
+    .button-content span {
+        font-size: 0.9rem;
+    }
+
+    .scroll-indicator.scroll-up {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .scroll-indicator.scroll-up .scroll-arrow {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-section {
+        padding: 2rem 1rem;
+        padding-bottom: 5rem;
+    }
+
+    .contact-image {
+        height: 250px;
+    }
+
+    .contact-text h2 {
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+    }
+
+    .contact-text > p {
+        font-size: 1rem;
+    }
+
+    .feature-item {
+        padding: 1.2rem;
+    }
+
+    .contact-buttons {
+        gap: 0.8rem;
+    }
+
+    .button-content {
+        padding: 0.8rem 1rem;
+    }
+
+    .button-content span {
+        font-size: 0.85rem;
+    }
+
+    .scroll-indicator.scroll-up {
+        gap: 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .scroll-indicator.scroll-up .scroll-arrow {
+        width: 12px;
+        height: 12px;
+    }
+} 

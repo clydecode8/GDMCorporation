@@ -1,0 +1,323 @@
+/* Dream Space Page Styles */
+.dream-page {
+    background: #fff;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.dream-bg {
+    background: url('../../assets/GDM-PORTFOLIO.pdf.png') center center/cover no-repeat;
+    opacity: 0.1;
+}
+
+.dream-overlay {
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+}
+
+.dream-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.dream-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.dream-text {
+    flex: 1;
+    max-width: 500px;
+    padding-left: 2rem;
+}
+
+.dream-text h1 {
+    font-size: clamp(2.5rem, 3vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.2;
+    color: #1a1a1a;
+}
+
+.highlight {
+    color: #7B7EF4;
+}
+
+.dream-images {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 700px;
+    margin-right: 2rem;
+}
+
+/* Image containers */
+.image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* First image (left) - make it shorter */
+.image-container.left {
+    padding-bottom: 100%; /* Much shorter for desktop */
+}
+
+/* Second image (right) - keep it longer */
+.image-container.right {
+    padding-bottom: 200%; /* Much longer for desktop */
+}
+
+.dream-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .image-container.left {
+        padding-bottom: 120%; /* Start transition to mobile size */
+    }
+
+    .image-container.right {
+        padding-bottom: 180%; /* Start transition to mobile size */
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container {
+        padding-bottom: 140%;
+    }
+    
+    .image-container.left {
+        padding-bottom: 112%; /* Keep existing mobile proportions */
+    }
+
+    .image-container.right {
+        padding-bottom: 170%;
+        margin-top: -2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-container {
+        padding-bottom: 130%;
+    }
+    
+    .image-container.left {
+        padding-bottom: 104%; /* Keep existing mobile proportions */
+    }
+
+    .image-container.right {
+        padding-bottom: 160%;
+    }
+
+    .dream-images {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .dream-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .dream-content {
+        gap: 3rem;
+    }
+
+    .dream-text {
+        padding-left: 1rem;
+    }
+
+    .dream-text h1 {
+        font-size: clamp(2rem, 2.5vw, 2.8rem);
+    }
+
+    .dream-images {
+        margin-right: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .dream-content {
+        flex-direction: column;
+        gap: 3rem;
+        text-align: left;
+        padding: 2rem;
+    }
+
+    .dream-text {
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .dream-images {
+        margin: 0;
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dream-container {
+        padding: 2rem 1rem;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .dream-content {
+        padding: 1rem;
+        gap: 10rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dream-text {
+        max-width: 100%;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .dream-text h1 {
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+        text-align: center;
+    }
+
+    .dream-images {
+        gap: 1rem;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 2rem;
+        width: 90%;
+    }
+
+    .image-container {
+        padding-bottom: 140%; /* Slightly reduced for tablets but still tall */
+    }
+
+    .image-container.left {
+        margin-top: 2rem;
+    }
+
+    .image-container.right {
+        margin-top: -2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dream-container {
+        padding: 1.5rem 0.5rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dream-content {
+        padding: 0.5rem;
+        gap: 2rem;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .dream-text {
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .dream-text h1 {
+        font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    .dream-images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0 1rem;
+        margin-top: 1rem;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+
+    .image-container {
+        width: 100%;
+        padding-bottom: 130%; /* Slightly reduced for mobile but maintaining height */
+        position: relative;
+    }
+
+    .image-container.left {
+        margin-top: 2rem;
+    }
+
+    .image-container.right {
+        margin-top: -2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .dream-content {
+        max-width: 320px;
+    }
+
+    .dream-text {
+        margin-bottom: 1.5rem;
+    }
+
+    .dream-text h1 {
+        font-size: clamp(1.2rem, 3vw, 1.6rem);
+    }
+
+    .dream-images {
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+
+    .image-container {
+        padding-bottom: 80%;
+    }
+
+    .image-container.left {
+        margin-top: 1.5rem;
+    }
+
+    .image-container.right {
+        margin-top: -1.5rem;
+    }
+} 

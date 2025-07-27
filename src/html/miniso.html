@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GDM Corporate - Miniso Project</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/miniso.css">
+    <link rel="stylesheet" href="../css/components/contact-section.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="project-page">
+    <nav class="navigation">
+        <a href="commercial.html" class="back-link">← Back</a>
+    </nav>
+
+    <div class="scroll-container">
+        <section class="section section-1">
+            <div class="project-content">
+                <div class="project-text" data-aos="fade-right">
+                    <h1 class="project-title">MINISO OUTLET</h1>
+                    <p class="project-description">
+                        Our workers also designed the interior for MINISO Outlet at Kuala Lumpur, Selangor, Johor
+                        and Melaka by creating a warm minimalist style retail shop using the colour brown and white.
+                    </p>
+                    <a href="#section2" class="project-button scroll-btn">PROJECT 3</a>
+                </div>
+                <div class="project-image" data-aos="fade-left">
+                    <img src="../../assets/miniso-section1.png" alt="Miniso Interior Design">
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <section id="section2" class="section section-2">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Interior Design Excellence</h2>
+                <p class="section-description">
+                    Creating efficient and aesthetically pleasing retail spaces that enhance the shopping experience
+                    while maintaining MINISO's signature minimalist design philosophy.
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-column first-column">
+                    <div class="gallery-item height-50" data-aos="fade-up">
+                        <img src="../../assets/miniso-section2-1.png" alt="Miniso Interior View 1">
+                    </div>
+                    <div class="gallery-item height-50" data-aos="fade-up" data-aos-delay="100">
+                        <img src="../../assets/miniso-section2-4.png" alt="Miniso Interior View 2">
+                    </div>
+                </div>
+                <div class="gallery-column second-column">
+                    <div class="gallery-item height-40" data-aos="fade-up" data-aos-delay="200">
+                        <img src="../../assets/miniso-section2-2.png" alt="Miniso Interior View 3">
+                    </div>
+                    <div class="gallery-item height-60" data-aos="fade-up" data-aos-delay="300">
+                        <img src="../../assets/miniso-section2-5.png" alt="Miniso Interior View 4">
+                    </div>
+                </div>
+                <div class="gallery-column third-column">
+                    <div class="gallery-item height-60" data-aos="fade-up" data-aos-delay="400">
+                        <img src="../../assets/miniso-section2-3.png" alt="Miniso Interior View 5">
+                    </div>
+                    <div class="gallery-item height-40" data-aos="fade-up" data-aos-delay="500">
+                        <img src="../../assets/miniso-section2-6.png" alt="Miniso Interior View 6">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section component -->
+        <section id="contact-section-container" style="--contact-bg-color: #fff"></section>
+    </div>
+
+    <script>
+        // Load contact section component
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../components/contact-section.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const container = document.getElementById('contact-section-container');
+                    const temp = document.createElement('div');
+                    temp.innerHTML = html;
+                    
+                    const scripts = temp.getElementsByTagName('script');
+                    const scriptContents = [];
+                    
+                    while (scripts.length > 0) {
+                        scriptContents.push(scripts[0].innerHTML);
+                        scripts[0].remove();
+                    }
+                    
+                    container.innerHTML = temp.innerHTML;
+                    
+                    scriptContents.forEach(scriptContent => {
+                        const scriptElement = document.createElement('script');
+                        scriptElement.textContent = scriptContent;
+                        container.appendChild(scriptElement);
+                    });
+
+                    document.querySelectorAll('[data-aos]').forEach((element) => {
+                        observer.observe(element);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading contact section:', error);
+                    document.getElementById('contact-section-container').innerHTML = 
+                        '<p style="text-align: center; padding: 2rem;">Error loading contact section. Please try refreshing the page.</p>';
+                });
+        });
+
+        // Scroll button functionality
+        document.querySelectorAll('.scroll-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-aos]').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html> 

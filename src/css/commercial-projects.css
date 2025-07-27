@@ -1,0 +1,304 @@
+/* Commercial Projects Page Styles */
+.commercial-page {
+    background: #fff;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../assets/commercialhome.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    z-index: 0;
+}
+
+/* Remove the overlay since the image itself has the right opacity */
+.commercial-bg, .commercial-overlay {
+    display: none;
+}
+
+.commercial-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.commercial-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: 2px;
+}
+
+.projects-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+}
+
+.project-card {
+    flex: 1;
+    max-width: 315px; /* Increased by 5% from 300px */
+    min-width: 231px; /* Increased by 5% from 220px */
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.project-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.project-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 120%;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 248, 255, 0.95), rgba(245, 245, 245, 0.9));
+    opacity: 0;
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    backdrop-filter: blur(2px);
+}
+
+.overlay-content {
+    text-align: center;
+    color: #1a1a1a;
+    transform: translateY(20px);
+    transition: transform 0.5s ease;
+    padding: 1rem;
+}
+
+.overlay-content h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin: 0 0 0.8rem 0;
+    letter-spacing: 1.2px;
+    color: #2c2c2c;
+    text-transform: uppercase;
+}
+
+.overlay-content p {
+    font-size: 1rem;
+    margin: 0;
+    color: #555;
+    font-weight: 600;
+    position: relative;
+}
+
+.overlay-content p::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 40px;
+    height: 2px;
+    background: #333;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+/* Hover Effects */
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-card:hover .overlay {
+    opacity: 1;
+}
+
+.project-card:hover .overlay-content {
+    transform: translateY(0);
+}
+
+.project-card:hover .overlay-content p::after {
+    width: 60px;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.08);
+}
+
+/* On hover, make the image expand to cover the entire card */
+.project-card:hover .project-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 0;
+    z-index: 2;
+}
+
+.project-content {
+    padding: 1.2rem;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.project-card:hover .project-content {
+    opacity: 0;
+}
+
+.project-content h2 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    position: relative;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1180px) {
+    .commercial-container {
+        padding: 3rem 1.5rem;
+    }
+
+    .projects-grid {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .project-card {
+        flex: 0 1 calc(33.333% - 1rem);
+        max-width: 273px; /* Increased by 5% from 260px */
+        min-width: 210px; /* Increased by 5% from 200px */
+    }
+}
+
+@media (max-width: 992px) {
+    .project-card {
+        flex: 0 1 calc(50% - 1rem);
+        max-width: 315px; /* Increased by 5% from 300px */
+    }
+    
+    .page-wrapper {
+        background-size: 140% auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .commercial-container {
+        padding: 2rem 1rem;
+    }
+
+    .commercial-title {
+        margin-bottom: 2rem;
+    }
+
+    .projects-grid {
+        gap: 1rem;
+    }
+
+    .project-card {
+        flex: 0 1 calc(50% - 0.5rem);
+    }
+
+    .project-content {
+        padding: 0.8rem;
+    }
+    .page-wrapper {
+        background-size: cover;
+    }
+}
+
+@media (max-width: 480px) {
+    .commercial-container {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .commercial-title {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .projects-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .project-card {
+        flex: 0 1 auto;
+        width: 100%;
+        max-width: 357px; /* Increased by 5% from 340px */
+    }
+
+    .project-image {
+        padding-bottom: 100%; /* Adjusted for mobile to maintain proportion */
+    }
+
+    .project-content h2 {
+        font-size: 0.85rem;
+    }
+    .page-wrapper {
+        background-size: cover;
+    }
+} 

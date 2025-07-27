@@ -1,0 +1,968 @@
+/* Reset and base styles - Fluid Responsive */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: clamp(14px, 2.5vw, 18px);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #fff;
+  color: #1a1a1a;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Fluid Hero Background */
+.hero-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../../assets/GDM-PORTFOLIO.pdf.png') center center/cover no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero Link Container - Fluid */
+.hero-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* Main Hero Section - Fluid Scaling */
+.main-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 4vh 6vw;
+  z-index: 2;
+}
+
+/* Logo Container - Fluid Positioning */
+.logo-container {
+  position: absolute;
+  top: 2vh;
+  right: 3vw;
+  z-index: 10;
+  width: clamp(80px, 10vw, 150px);
+}
+
+.logo-img {
+  width: 100%;
+  height: auto;
+}
+
+/* Hero Content - Fully Fluid */
+.hero-content {
+  position: relative;
+  margin-top: 15vh;
+  z-index: 2;
+  width: 100%;
+}
+
+.title-group {
+  position: relative;
+  margin-left: 5vw;
+}
+
+.gdm-bold {
+  display: block;
+  font-size: clamp(2rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.sdn-bhd {
+  display: block;
+  font-size: clamp(2rem, 8vw, 6rem);
+  font-weight: 800;
+  color: #8d7752;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  margin-top: 0.5vh;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 600;
+  color: #2a2a2a;
+  margin-top: 2vh;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Architectural Details */
+.architectural-details {
+  position: absolute;
+  top: 10vh;
+  right: 5vw;
+  max-width: 300px;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+}
+
+.detail-item {
+  margin-bottom: 2vh;
+}
+
+.detail-number {
+  display: block;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5vh;
+}
+
+.detail-text {
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Measurement Indicators */
+.measurement-indicators {
+  position: absolute;
+  right: 15vw;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  color: #666;
+}
+
+.indicator {
+  position: relative;
+  padding-right: 2vw;
+  text-align: right;
+}
+
+.indicator::after {
+  content: '';
+  position: absolute;
+  right: -1vw;
+  top: 50%;
+  width: 2vw;
+  height: 1px;
+  background: #666;
+}
+
+/* Direction Indicators */
+.direction-indicators {
+  position: absolute;
+  bottom: 5vh;
+  left: 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+}
+
+.direction-item {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.direction-line {
+  width: 3vw;
+  height: 2px;
+  display: inline-block;
+}
+
+.direction-line.clean {
+  background: #4CAF50;
+}
+
+.direction-line.polluted {
+  background: #f44336;
+}
+
+.direction-text {
+  color: #666;
+}
+
+/* Enhanced Back Link - Fluid */
+.back-link {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top, 1rem) + 0.5rem);
+  left: max(1rem, env(safe-area-inset-left, 1rem) + 0.5rem);
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  color: #1a1a1a;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid rgba(141, 119, 82, 0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.back-link:hover,
+.back-link:focus {
+  background: #8d7752;
+  color: #fff;
+  border-color: #8d7752;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(141, 119, 82, 0.2);
+}
+
+.back-link:active {
+  transform: translateY(0);
+}
+
+/* Responsive Button Adjustments */
+@media (max-width: 768px) {
+  .back-link {
+    top: max(0.8rem, env(safe-area-inset-top, 0.8rem) + 0.5rem);
+    left: max(0.8rem, env(safe-area-inset-left, 0.8rem) + 0.5rem);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Small Screen Optimizations */
+@media (max-width: 480px) {
+  .back-link {
+    top: max(0.6rem, env(safe-area-inset-top, 0.6rem) + 0.5rem);
+    left: max(0.6rem, env(safe-area-inset-left, 0.6rem) + 0.5rem);
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    background: rgba(255,255,255,0.98);
+  }
+}
+
+/* Ensure back button doesn't overlap content on very small devices */
+@media (max-height: 500px) {
+  .back-link {
+    position: absolute;
+  }
+}
+
+/* Landscape Mode Adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+  .back-link {
+    position: absolute;
+    top: 0.8rem;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .main-hero {
+    padding: 3vh 4vw;
+  }
+
+  .title-group {
+    margin-left: 3vw;
+  }
+
+  .architectural-details {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 4vh;
+    margin-left: 3vw;
+    max-width: 90%;
+  }
+
+  .measurement-indicators {
+    right: 5vw;
+    font-size: clamp(0.6rem, 2vw, 0.8rem);
+  }
+
+  .direction-indicators {
+    left: 3vw;
+    bottom: 3vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    margin-top: 10vh;
+  }
+
+  .gdm-bold,
+  .sdn-bhd {
+    font-size: clamp(1.8rem, 10vw, 3rem);
+  }
+
+  .subtitle {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+  }
+
+  .architectural-details {
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+  }
+
+  .measurement-indicators {
+    gap: 2vh;
+  }
+}
+
+/* Landscape Mode */
+@media (orientation: landscape) and (max-height: 600px) {
+  .hero-content {
+    margin-top: 5vh;
+  }
+
+  .architectural-details {
+    margin-top: 2vh;
+  }
+
+  .measurement-indicators {
+    gap: 1.5vh;
+  }
+
+  .direction-indicators {
+    bottom: 2vh;
+  }
+}
+
+/* Print styles */
+@media print {
+  .hero-bg {
+    position: absolute;
+    print-color-adjust: exact;
+  }
+  
+  .hero-content,
+  .architectural-details,
+  .measurement-indicators,
+  .direction-indicators {
+    print-color-adjust: exact;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .hero-link:active {
+    background: rgba(0,0,0,0.03);
+  }
+  
+  .back-link:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hero-bg {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .gdm-bold,
+  .sdn-bhd {
+    text-shadow: none;
+    font-weight: 900;
+  }
+  
+  .subtitle {
+    text-shadow: none;
+    font-weight: 600;
+  }
+  
+  .back-link {
+    border-width: 0.5vw;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .main-hero {
+    background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(255,255,255,0.1) 100%);
+  }
+  
+  .back-link {
+    background: rgba(0,0,0,0.9);
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+  }
+} 
+
+/* Split Layout */
+.split-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.image-side {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw;
+}
+
+.side-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.9;
+  filter: contrast(1.1);
+}
+
+/* About Page Styles - Updated */
+.about-page {
+  background: #fff;
+  min-height: 100vh;
+  padding-top: 4rem; /* Add padding to account for back button */
+}
+
+.about-page .back-link {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top, 1rem) + 0.5rem);
+  left: max(1rem, env(safe-area-inset-left, 1rem) + 0.5rem);
+  margin: 0.5rem;
+  border-radius: 6px;
+}
+
+.about-bg {
+  background: url('../../assets/second.png') center center/cover no-repeat;
+  opacity: 0.15;
+}
+
+.about-overlay {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+}
+
+.about-content {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  padding: 10vh 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 50vw;
+}
+
+.about-title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 4vh;
+  text-align: left;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  width: 100%;
+}
+
+.about-text {
+  max-width: 600px;
+  text-align: left;
+}
+
+.about-text p {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 4vh;
+  font-weight: 400;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .split-layout {
+    flex-direction: column-reverse;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .image-side {
+    height: 50vh;
+    padding: 4vw;
+  }
+
+  .about-content {
+    max-width: 100%;
+    padding: 8vh 5vw;
+  }
+
+  .about-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .image-side {
+    height: 40vh;
+  }
+
+  .about-content {
+    padding: 6vh 5vw;
+  }
+
+  .about-text p {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page {
+    padding-top: 3.5rem;
+  }
+  
+  .about-page .back-link {
+    top: max(0.8rem, env(safe-area-inset-top, 0.8rem) + 0.5rem);
+    left: max(0.8rem, env(safe-area-inset-left, 0.8rem) + 0.5rem);
+  }
+  
+  .image-side {
+    height: 35vh;
+  }
+
+  .about-content {
+    padding: 5vh 4vw;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .about-text p {
+    font-size: clamp(0.85rem, 4vw, 1rem);
+  }
+}
+
+/* Landscape Mode */
+@media (orientation: landscape) and (max-height: 600px) {
+  .split-layout {
+    flex-direction: row;
+  }
+
+  .image-side {
+    height: 100vh;
+  }
+
+  .about-content {
+    padding: 4vh 3vw;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 2vh;
+  }
+
+  .about-text p {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    margin-bottom: 2vh;
+  }
+} 
+
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: #7B7EF4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 12px rgba(123, 126, 244, 0.2);
+  margin-top: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.cta-button:hover {
+  background: #6366F1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(123, 126, 244, 0.3);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .cta-button {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.95rem;
+    width: auto;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-button {
+    padding: 0.7rem 1.6rem;
+    font-size: 0.9rem;
+    width: auto;
+  }
+} 
+
+/* Philosophy Page Styles */
+.philosophy-page {
+  background: #fff;
+  min-height: 100vh;
+  padding-top: 4rem;
+}
+
+.philosophy-bg {
+  background: url('../../assets/GDM-PORTFOLIO.pdf.png') center center/cover no-repeat;
+  opacity: 0.1;
+}
+
+.philosophy-overlay {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+}
+
+.philosophy-layout {
+  min-height: calc(100vh - 4rem);
+}
+
+.philosophy-content {
+  flex: 1;
+  padding: 4rem 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50%;
+}
+
+.philosophy-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+
+.philosophy-text {
+  max-width: 600px;
+}
+
+.philosophy-text p {
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.philosophy-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #000;
+}
+
+.architectural-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Responsive Adjustments for Philosophy Page */
+@media (max-width: 1024px) {
+  .philosophy-layout {
+    flex-direction: column;
+  }
+
+  .philosophy-content {
+    max-width: 100%;
+    padding: 3rem 2rem;
+    order: 1;
+  }
+
+  .philosophy-image {
+    min-height: 40vh;
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .philosophy-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .philosophy-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .philosophy-text p {
+    font-size: clamp(0.9rem, 4vw, 1rem);
+  }
+
+  .philosophy-image {
+    min-height: 30vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .philosophy-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .philosophy-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .philosophy-image {
+    min-height: 25vh;
+  }
+} 
+
+.philosophy-page .back-link {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top, 1rem) + 0.5rem);
+  left: max(1rem, env(safe-area-inset-left, 1rem) + 0.5rem);
+  z-index: 100;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .philosophy-page .back-link {
+    top: max(0.8rem, env(safe-area-inset-top, 0.8rem) + 0.5rem);
+    left: max(0.8rem, env(safe-area-inset-left, 0.8rem) + 0.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .philosophy-page .back-link {
+    top: max(0.6rem, env(safe-area-inset-top, 0.6rem) + 0.5rem);
+    left: max(0.6rem, env(safe-area-inset-left, 0.6rem) + 0.5rem);
+  }
+} 
+
+/* Qualification Page Styles */
+.qualification-page {
+  background: #fff;
+  min-height: 100vh;
+  padding-top: 4rem;
+}
+
+.qualification-bg {
+  background: url('../../assets/GDM-PORTFOLIO.pdf.png') center center/cover no-repeat;
+  opacity: 0.1;
+}
+
+.qualification-overlay {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+}
+
+.qualification-layout {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.qualification-header {
+  padding: 2rem 0;
+}
+
+.qualification-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 3rem;
+}
+
+.certificates-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.certificate-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+.certificate-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 1rem;
+}
+
+/* Responsive Adjustments for Qualification Page */
+@media (max-width: 1024px) {
+  .qualification-layout {
+    padding: 1.5rem;
+  }
+
+  .certificates-container {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .qualification-layout {
+    padding: 1rem;
+  }
+
+  .qualification-title {
+    margin-bottom: 2rem;
+  }
+
+  .certificates-container {
+    gap: 1rem;
+  }
+
+  .certificate-card {
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .qualification-layout {
+    padding: 0.8rem;
+  }
+
+  .qualification-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .certificate-card {
+    min-width: 100%;
+  }
+} 
+
+/* Back Button Styles - Consistent across pages */
+.back-link {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top, 1rem) + 0.5rem);
+  left: max(1rem, env(safe-area-inset-left, 1rem) + 0.5rem);
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  color: #1a1a1a;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid rgba(141, 119, 82, 0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.back-link:hover,
+.back-link:focus {
+  background: #8d7752;
+  color: #fff;
+  border-color: #8d7752;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(141, 119, 82, 0.2);
+}
+
+.back-link:active {
+  transform: translateY(0);
+}
+
+/* Add padding-top to all pages with back button */
+.about-page,
+.philosophy-page,
+.qualification-page {
+  padding-top: 4rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .back-link {
+    top: max(0.8rem, env(safe-area-inset-top, 0.8rem) + 0.5rem);
+    left: max(0.8rem, env(safe-area-inset-left, 0.8rem) + 0.5rem);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .about-page,
+  .philosophy-page,
+  .qualification-page {
+    padding-top: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-link {
+    top: max(0.6rem, env(safe-area-inset-top, 0.6rem) + 0.5rem);
+    left: max(0.6rem, env(safe-area-inset-left, 0.6rem) + 0.5rem);
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .about-page,
+  .philosophy-page,
+  .qualification-page {
+    padding-top: 3rem;
+  }
+} 

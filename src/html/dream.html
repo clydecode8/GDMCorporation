@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GDM Corporate - Dream Space</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/dream.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .loading-text {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #7B7EF4;
+            opacity: 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="dream-page">
+    <div class="page-wrapper">
+        <div class="hero-bg dream-bg"></div>
+        <div class="overlay dream-overlay"></div>
+
+        <main class="dream-container">
+            <div class="dream-content">
+                <div class="dream-text">
+                    <h1>Get your <span class="highlight">dream space</span> with the help of our highly experienced group of builders & designer.</h1>
+                </div>
+                <div class="dream-images">
+                    <div class="image-container left">
+                        <img src="../../assets/dreamspace.png" alt="Modern Spiral Staircase Design" class="dream-image">
+                    </div>
+                    <div class="image-container right">
+                        <img src="../../assets/dreamspace2.png" alt="Luxurious Interior Space" class="dream-image">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="loading-text">Creating your dream space...</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the service type from the URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceType = urlParams.get('service');
+            
+            // Default to commercial if no service type is specified
+            const redirectPage = serviceType ? `${serviceType}.html` : 'commercial.html';
+            
+            // Redirect after animations complete
+            setTimeout(() => {
+                window.location.href = redirectPage;
+            }, 4500); // Changed to 4.5 seconds
+        });
+    </script>
+</body>
+</html> 

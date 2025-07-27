@@ -1,0 +1,117 @@
+<!-- Contact Section Component -->
+<div class="contact-section">
+    <div class="contact-container">
+        <div class="contact-content" data-aos="fade-up">
+            <div class="contact-text">
+                <h2>Ready to Transform Your Space?</h2>
+                <p>Let's create something extraordinary together. Our team is ready to bring your vision to life with our unique artistic approach.</p>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-number">01</span>
+                        <h3>Creative Design</h3>
+                        <p>Unique artistic concepts tailored to your space</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-number">02</span>
+                        <h3>Expert Team</h3>
+                        <p>Skilled artists and designers at your service</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-number">03</span>
+                        <h3>Quick Response</h3>
+                        <p>Fast and professional communication</p>
+                    </div>
+                </div>
+                <div class="contact-methods">
+                    <div class="contact-button-wrapper">
+                        <div class="contact-buttons">
+                            <div class="email-button">
+                                <a href="mailto:gdmcorporate20@gmail.com" class="button-content">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Email Us</span>
+                                </a>
+                                <!-- Email QR Code - Future Implementation
+                                <button class="qr-toggle">
+                                    <i class="fas fa-qrcode"></i>
+                                    <span>Show Email QR Code</span>
+                                </button>
+                                -->
+                            </div>
+                            <div class="whatsapp-button">
+                                <a href="https://wa.me/60126639698" target="_blank" class="button-content">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>WhatsApp Us</span>
+                                </a>
+                                <button class="qr-toggle">
+                                    <i class="fas fa-qrcode"></i>
+                                    <span>Show WhatsApp QR Code</span>
+                                </button>
+                                <div class="qr-hover">
+                                    <img src="../../assets/whatsapp-qrcode.png" alt="WhatsApp QR Code">
+                                    <span>Scan to chat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-image">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../../assets/ssm.png" alt="SSM Certificate">
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="../../assets/cidb.png" alt="CIDB Certificate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator scroll-up">
+            <span>Back to Top</span>
+            <div class="scroll-arrow up"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Initialize component functionality after it's loaded
+    (function() {
+        // Show QR code by default
+        const whatsappButton = document.querySelector('.whatsapp-button');
+        const toggleButton = document.querySelector('.qr-toggle');
+        whatsappButton.classList.add('show-qr');
+        toggleButton.querySelector('span').textContent = 'Hide WhatsApp QR Code';
+
+        // QR code toggle
+        toggleButton.addEventListener('click', function() {
+            const button = this.closest('.whatsapp-button');
+            button.classList.toggle('show-qr');
+            const span = this.querySelector('span');
+            if (button.classList.contains('show-qr')) {
+                span.textContent = 'Hide WhatsApp QR Code';
+            } else {
+                span.textContent = 'Show WhatsApp QR Code';
+            }
+        });
+
+        // Flip card functionality
+        const flipCard = document.querySelector('.flip-card');
+        flipCard.addEventListener('click', function() {
+            this.classList.add('clicking');
+            this.classList.toggle('flipped');
+            setTimeout(() => {
+                this.classList.remove('clicking');
+            }, 300);
+        });
+
+        // Scroll to top functionality
+        document.querySelector('.scroll-up').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    })();
+</script> 

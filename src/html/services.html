@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GDM Corporate - Our Services</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/services.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="services-page">
+    <nav class="navigation">
+        <a href="qualification.html" class="back-link">← Back</a>
+    </nav>
+
+    <div class="page-wrapper">
+        <div class="hero-bg services-bg"></div>
+        <div class="overlay services-overlay"></div>
+
+        <main class="services-container">
+            <h1 class="services-title">SERVICES</h1>
+            
+            <div class="services-grid">
+                <a href="dream.html?service=commercial" class="service-card" data-page="commercial">
+                    <div class="service-image">
+                        <img src="../../assets/commercial.png" alt="Commercial Renovation">
+                    </div>
+                    <div class="service-content">
+                        <h2>Commercial Renovation</h2>
+                    </div>
+                </a>
+
+                <a href="dream.html?service=corporate" class="service-card" data-page="corporate">
+                    <div class="service-image">
+                        <img src="../../assets/corporate.png" alt="Corporate Renovation">
+                    </div>
+                    <div class="service-content">
+                        <h2>Corporate Renovation</h2>
+                    </div>
+                </a>
+
+                <a href="dream.html?service=construction" class="service-card" data-page="construction">
+                    <div class="service-image">
+                        <img src="../../assets/construction.png" alt="Construction Project">
+                    </div>
+                    <div class="service-content">
+                        <h2>Construction Project</h2>
+                    </div>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const loadingScreen = document.querySelector('.loading-screen');
+
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    
+                    // Show loading screen
+                    loadingScreen.classList.add('active');
+
+                    // Navigate after animation
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
