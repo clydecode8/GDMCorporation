@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/2dcaffe.css">
     <link rel="stylesheet" href="../css/components/contact-section.css">
+    <link rel="stylesheet" href="../css/components/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="project-page">
+    <!-- Header Navigation Component -->
+    <div id="header-component"></div>
+
     <nav class="navigation">
         <a href="commercial.html" class="back-link">← Back</a>
     </nav>
@@ -215,6 +219,26 @@
                 });
         });
 
+        // Load and initialize header component
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const headerComponent = document.getElementById('header-component');
+                    headerComponent.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading header component:', error);
+                    document.getElementById('header-component').innerHTML = 
+                        '<p style="text-align: center; padding: 2rem;">Error loading header. Please try refreshing the page.</p>';
+                });
+        });
+
         // Existing scroll button functionality
         document.querySelectorAll('.scroll-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -239,5 +263,6 @@
             observer.observe(element);
         });
     </script>
+    <script src="../app.js"></script>
 </body>
 </html> 
