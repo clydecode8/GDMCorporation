@@ -46,9 +46,8 @@ body {
 /* Back Button Styles */
 .back-link {
   position: absolute;
-  top: max(1rem, env(safe-area-inset-top, 1rem) + 0.5rem);
   left: max(1rem, env(safe-area-inset-left, 1rem) + 0.5rem);
-  z-index: 100;
+  z-index: 999;
   background: rgba(255,255,255,0.95);
   color: #1a1a1a;
   padding: 0.6rem 1.2rem;
@@ -117,7 +116,6 @@ body {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .back-link {
-    top: max(0.8rem, env(safe-area-inset-top, 0.8rem) + 0.5rem);
     left: max(0.8rem, env(safe-area-inset-left, 0.8rem) + 0.5rem);
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
@@ -131,7 +129,6 @@ body {
 
 @media (max-width: 480px) {
   .back-link {
-    top: max(0.6rem, env(safe-area-inset-top, 0.6rem) + 0.5rem);
     left: max(0.6rem, env(safe-area-inset-left, 0.6rem) + 0.5rem);
     padding: 0.5rem 0.9rem;
     font-size: 0.8rem;

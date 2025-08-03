@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GDM Corporate - MINISO HQ Project</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/minisohq.css">
+    <link rel="stylesheet" href="../css/components/contact-section.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="project-page">
+    <!-- Header Navigation Component -->
+    <div id="header-component"></div>
+
+    <nav class="navigation">
+        <a href="commercial.html" class="back-link">← Back</a>
+    </nav>
+
+    <div class="scroll-container">
+        <section class="section section-1">
+            <div class="project-content">
+                <div class="project-text" data-aos="fade-right">
+                    <h1 class="project-title">MINISO HQ</h1>
+                    <p class="project-description">
+                        Our workers design and constructed for MINISO Hq Office in Seri Kembangan, Selangor. The concept idea is to bring the kampung house style in an office. To create it, we use the element of steel and timber in the furniture and interior.
+                    </p>
+                    <a href="#section2" class="project-button scroll-btn">PROJECT 6</a>
+                </div>
+                <div class="project-image" data-aos="fade-left">
+                    <img src="../../assets/minisohq-section1.png" alt="MINISO HQ Office Interior">
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <section id="section2" class="section section-2">
+            <div class="gallery-container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Interior Design Excellence</h2>
+                    <p class="section-description">
+                        Discover the perfect blend of modern office functionality and traditional kampung house aesthetics, creating a unique and inspiring workspace.
+                    </p>
+                </div>
+                <div class="gallery-wrapper">
+                    <div class="gallery-row first-row">
+                        <div class="gallery-item left-half" data-aos="fade-up">
+                            <img src="../../assets/minisohq-section2-1.png" alt="MINISO HQ Interior 1">
+                        </div>
+                        <div class="gallery-item right-half" data-aos="fade-up" data-aos-delay="100">
+                            <img src="../../assets/minisohq-section2-2.png" alt="MINISO HQ Interior 2">
+                        </div>
+                    </div>
+                    <div class="gallery-row second-row">
+                        <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                            <img src="../../assets/minisohq-section2-3.png" alt="MINISO HQ Interior 3">
+                        </div>
+                        <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                            <img src="../../assets/minisohq-section2-4.png" alt="MINISO HQ Interior 4">
+                        </div>
+                        <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                            <img src="../../assets/minisohq-section2-5.png" alt="MINISO HQ Interior 5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section3" class="section section-3">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Office Construction & Fit-Out</h2>
+                <p class="section-description">
+                    We provide comprehensive construction and fit-out services for modern office spaces, ensuring high-quality finishes and innovative designs that enhance productivity and employee wellbeing.
+                </p>
+            </div>
+            <div class="process-container">
+                <div class="process-column left-column">
+                    <div class="process-item large-top" data-aos="fade-right">
+                        <img src="../../assets/minisohq-section3-1.png" alt="MINISO HQ Process 1">
+                    </div>
+                    <div class="process-item small-bottom" data-aos="fade-right" data-aos-delay="100">
+                        <img src="../../assets/minisohq-section3-2.png" alt="MINISO HQ Process 2">
+                    </div>
+                </div>
+                <div class="process-column right-column">
+                    <div class="process-item extra-large-top" data-aos="fade-left" data-aos-delay="200">
+                        <img src="../../assets/minisohq-section3-3.png" alt="MINISO HQ Process 3">
+                    </div>
+                    <div class="process-item extra-small-bottom" data-aos="fade-left" data-aos-delay="300">
+                        <img src="../../assets/minisohq-section3-4.png" alt="GDM Logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section component -->
+        <section id="contact-section-container" style="--contact-bg-color: #fff"></section>
+    </div>
+
+    <script>
+        // Load contact section component
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../components/contact-section.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const container = document.getElementById('contact-section-container');
+                    const temp = document.createElement('div');
+                    temp.innerHTML = html;
+                    
+                    const scripts = temp.getElementsByTagName('script');
+                    const scriptContents = [];
+                    
+                    while (scripts.length > 0) {
+                        scriptContents.push(scripts[0].innerHTML);
+                        scripts[0].remove();
+                    }
+                    
+                    container.innerHTML = temp.innerHTML;
+                    
+                    scriptContents.forEach(scriptContent => {
+                        const scriptElement = document.createElement('script');
+                        scriptElement.textContent = scriptContent;
+                        container.appendChild(scriptElement);
+                    });
+
+                    document.querySelectorAll('[data-aos]').forEach((element) => {
+                        observer.observe(element);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading contact section:', error);
+                    document.getElementById('contact-section-container').innerHTML = 
+                        '<p style="text-align: center; padding: 2rem;">Error loading contact section. Please try refreshing the page.</p>';
+                });
+        });
+
+        // Load header component
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const headerContainer = document.getElementById('header-component');
+                    headerContainer.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading header component:', error);
+                    document.getElementById('header-component').innerHTML = 
+                        '<p style="text-align: center; padding: 2rem;">Error loading header. Please try refreshing the page.</p>';
+                });
+        });
+
+        // Scroll button functionality
+        document.querySelectorAll('.scroll-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-aos]').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+    <script src="../app.js"></script>
+</body>
+</html> 
