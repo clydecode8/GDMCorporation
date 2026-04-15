@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GDM Corporate - SSF Retail Shop Project</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/ssf.css">
+    <link rel="stylesheet" href="../css/components/contact-section.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="project-page">
+    <!-- Header Navigation Component -->
+    <div id="header-component"></div>
+
+    <nav class="navigation">
+        <a href="commercial.html" class="back-link">← Back</a>
+    </nav>
+
+    <div class="scroll-container">
+        <section class="section section-1">
+            <div class="project-content">
+                <div class="project-text" data-aos="fade-right">
+                    <h1 class="project-title">SSF RETAIL SHOP</h1>
+                    <p class="project-description">
+                        Our subcontractor and designer has worked on SSF Retail Shop and outlet at Johor and Malacca to helps them create a modern chic styled retail interior that used classic fabrics and material with a little touch of glam.
+                    </p>
+                    <a href="#section2" class="project-button scroll-btn">PROJECT 8</a>
+                </div>
+                <div class="project-image" data-aos="fade-left">
+                    <img src="../../assets/ssf-section1.png" alt="SSF Retail Shop Interior">
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-down-arrow"></div>
+            </div>
+        </section>
+
+        <section id="section2" class="section section-2">
+            <div class="gallery-container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Modern Chic Retail Design</h2>
+                    <p class="section-description">
+                        Discover the perfect blend of classic fabrics and materials with contemporary design elements, creating an elegant and sophisticated retail environment that enhances the shopping experience.
+                    </p>
+                </div>
+                <div class="gallery-grid">
+                    <!-- First Row: Merged first and second columns -->
+                    <div class="gallery-row merged-row">
+                        <div class="gallery-item merged-item" data-aos="fade-up">
+                            <img src="../../assets/ssf-section2-1.png" alt="SSF Retail Interior 1">
+                        </div>
+                    </div>
+                    
+                    <!-- Second Row: Three separate columns -->
+                    <div class="gallery-row second-row">
+                        <div class="gallery-column first-column">
+                            <div class="gallery-item height-100" data-aos="fade-up" data-aos-delay="200">
+                                <img src="../../assets/ssf-section2-3.png" alt="SSF Retail Interior 2">
+                            </div>
+                        </div>
+                        <div class="gallery-column second-column">
+                            <div class="gallery-item height-100" data-aos="fade-up" data-aos-delay="300">
+                                <img src="../../assets/ssf-section2-2.png" alt="SSF Retail Interior 3">
+                            </div>
+                        </div>
+                        <div class="gallery-column third-column">
+                            <div class="gallery-item height-60" data-aos="fade-up" data-aos-delay="400">
+                                <img src="../../assets/ssf-section2-4.png" alt="SSF Retail Interior 4">
+                            </div>
+                            <div class="gallery-item height-40" data-aos="fade-up" data-aos-delay="500">
+                                <img src="../../assets/ssf-section2-5.png" alt="SSF Retail Interior 5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section component -->
+        <section id="contact-section-container" style="--contact-bg-color: #fff"></section>
+    </div>
+
+    <script>
+        // Load contact section component
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../components/contact-section.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const container = document.getElementById('contact-section-container');
+                    const temp = document.createElement('div');
+                    temp.innerHTML = html;
+                    
+                    const scripts = temp.getElementsByTagName('script');
+                    const scriptContents = [];
+                    
+                    while (scripts.length > 0) {
+                        scriptContents.push(scripts[0].innerHTML);
+                        scripts[0].remove();
+                    }
+                    
+                    container.innerHTML = temp.innerHTML;
+                    
+                    scriptContents.forEach(scriptContent => {
+                        const scriptElement = document.createElement('script');
+                        scriptElement.textContent = scriptContent;
+                        container.appendChild(scriptElement);
+                    });
+
+                    document.querySelectorAll('[data-aos]').forEach((element) => {
+                        observer.observe(element);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading contact section:', error);
+                    document.getElementById('contact-section-container').innerHTML = 
+                        '<p style="text-align: center; padding: 2rem;">Error loading contact section. Please try refreshing the page.</p>';
+                });
+        });
+
+        // Load header component
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../components/header.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const headerContainer = document.getElementById('header-component');
+                    headerContainer.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading header component:', error);
+                    document.getElementById('header-component').innerHTML = 
+                        '<p style="text-align: center; padding: 2rem;">Error loading header. Please try refreshing the page.</p>';
+                });
+        });
+
+        // Scroll button functionality
+        document.querySelectorAll('.scroll-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-aos]').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+    <script src="../app.js"></script>
+</body>
+</html> 

@@ -16,6 +16,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #ffffff;
     background-image: url('../../assets/commercialhome.png');
     background-size: cover;
     background-position: center;
@@ -25,13 +26,24 @@ body {
     overflow-x: hidden;
     width: 100vw;
     min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* Slider Styles */
 .slider {
     position: relative;
     min-height: 100vh;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: transparent;
     padding-top: 80px;
     width: 100%;
 }
@@ -112,7 +124,7 @@ body {
     max-width: 500px;
     height: min(70vh, 600px);
     position: relative;
-    border-radius: 20px;
+    border-radius: 25px;
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -121,6 +133,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 25px;
 }
 
 .cta-group {
@@ -229,6 +242,9 @@ body {
     flex-shrink: 0;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .thumbnail .item:active {
@@ -438,14 +454,19 @@ body {
 @media screen and (max-width: 1023px) and (min-width: 768px) {
     .slider {
         padding-top: 70px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
     
     .featured-project {
-        height: calc(80vh - 70px);
+        height: 65vh;
+        min-height: 400px;
         flex-direction: column;
         justify-content: center;
         gap: 20px;
         padding: 20px;
+        flex-shrink: 0;
     }
     
     .featured-project .content,
@@ -455,8 +476,8 @@ body {
     }
     
     .featured-project .featured-image {
-        height: 40vh;
-        max-height: 300px;
+        height: 35vh;
+        max-height: 280px;
     }
     
     .featured-project .content {
@@ -464,8 +485,22 @@ body {
         padding: 20px;
     }
     
+    .projects-row {
+        flex-shrink: 0;
+        height: 35vh;
+        min-height: 250px;
+        overflow: hidden;
+    }
+    
     .thumbnail-container {
         padding: 0 40px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .thumbnail {
+        padding: 15px 0;
     }
     
     .thumbnail .item {
@@ -545,6 +580,208 @@ body {
     }
 }
 
+/* Mobile Vertical Layout (800px and below) */
+@media screen and (max-width: 800px) {
+    .thumbnail-container {
+        padding: 0 20px !important;
+        height: 60vh !important;
+        max-height: 60vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        scroll-behavior: smooth !important;
+    }
+    
+    .thumbnail {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        padding: 20px 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        cursor: default !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .thumbnail .item {
+        min-width: 60% !important;
+        width: 60% !important;
+        max-width: 300px !important;
+        height: 150px !important;
+        flex-shrink: 0 !important;
+        border-radius: 15px !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important;
+        margin: 0 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .thumbnail .item-content {
+        padding: 20px !important;
+        background: linear-gradient(to top, rgba(255,255,255,0.98), rgba(255,255,255,0.9)) !important;
+    }
+    
+    .thumbnail .item h3 {
+        font-size: clamp(1.2em, 3.5vw, 1.5em) !important;
+        margin-bottom: 10px !important;
+        font-weight: 600 !important;
+    }
+    
+    .thumbnail .item .category {
+        font-size: clamp(0.9em, 2.5vw, 1em) !important;
+        color: #666 !important;
+    }
+    
+    /* Hide arrows on mobile since it's now vertical scroll */
+    .arrows {
+        display: none !important;
+    }
+    
+    /* Override any grid layouts */
+    .thumbnail {
+        display: flex !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+    }
+    
+    /* Override height-based media queries for width-based layout */
+    .projects-row:not(.hidden) .thumbnail {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        gap: 20px !important;
+        padding: 20px 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        align-items: center !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item {
+        min-width: 60% !important;
+        width: 60% !important;
+        max-width: 300px !important;
+        height: 150px !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    /* Force vertical scrolling and disable horizontal scrolling */
+    .projects-row {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 60vh !important;
+    }
+    
+    .projects-row:not(.hidden) {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 60vh !important;
+    }
+}
+
+/* Show toggle button for 900px width and below */
+@media screen and (max-width: 900px) {
+    .thumbnail-toggle-container {
+        display: block !important;
+    }
+    
+    .close-projects-btn {
+        display: block !important;
+    }
+    
+    /* Hide projects row by default for 900px and below */
+    .projects-row {
+        height: 0 !important;
+        min-height: 0 !important;
+        flex-shrink: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        transition: all 0.5s ease !important;
+        opacity: 0 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        z-index: 1002 !important;
+        background: rgba(255, 255, 255, 1) !important;
+    }
+    
+    .projects-row.hidden {
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        display: none !important;
+    }
+    
+    .projects-row:not(.hidden) {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        opacity: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 60px 20px 20px 20px !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        overflow: hidden !important;
+        background: rgba(255, 255, 255, 1) !important;
+        z-index: 1002 !important;
+    }
+    
+    .thumbnail-container {
+        height: auto !important;
+        width: 100% !important;
+        max-width: 900px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        z-index: 1004 !important;
+        position: relative !important;
+    }
+    
+    .thumbnail {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-rows: repeat(2, 1fr) !important;
+        gap: 25px !important;
+        width: 100% !important;
+        max-width: 900px !important;
+        padding: 15px 0 !important;
+        z-index: 1005 !important;
+        position: relative !important;
+    }
+    
+    .thumbnail .item {
+        min-width: 250px !important;
+        width: 100% !important;
+        height: 220px !important;
+        margin: 0 !important;
+        z-index: 1006 !important;
+        position: relative !important;
+    }
+}
+
 /* Small Mobile (320px - 479px) */
 @media screen and (max-width: 479px) {
     .slider {
@@ -603,31 +840,40 @@ body {
     }
     
     .thumbnail-container {
-        padding: 0 20px;
+        padding: 0 15px;
+        max-height: 65vh;
+        height: 60vh;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
     
     .thumbnail {
-        gap: 12px;
+        gap: 15px;
         padding: 15px 0;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
     }
     
     .thumbnail .item {
-        min-width: 200px;
-        width: 200px;
-        height: 140px;
+        min-width: 60%;
+        width: 60%;
+        max-width: 300px;
+        height: 150px;
+        border-radius: 12px;
     }
     
     .thumbnail .item-content {
-        padding: 12px;
+        padding: 15px;
     }
     
     .thumbnail .item h3 {
-        font-size: clamp(1em, 3vw, 1.1em);
+        font-size: clamp(1.1em, 3.5vw, 1.3em);
         margin-bottom: 8px;
     }
     
     .thumbnail .item .category {
-        font-size: clamp(0.75em, 2vw, 0.85em);
+        font-size: clamp(0.8em, 2.5vw, 0.9em);
     }
     
     .arrows button {
@@ -653,13 +899,40 @@ body {
     }
     
     .thumbnail .item {
-        min-width: 180px;
-        width: 180px;
+        min-width: 60%;
+        width: 60%;
+        max-width: 250px;
         height: 120px;
+        border-radius: 10px;
     }
     
     .thumbnail-container {
-        padding: 0 15px;
+        padding: 0 10px;
+        max-height: 60vh;
+        height: 55vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+    .thumbnail {
+        gap: 12px;
+        padding: 12px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .thumbnail .item-content {
+        padding: 12px;
+    }
+    
+    .thumbnail .item h3 {
+        font-size: clamp(1em, 3vw, 1.2em);
+        margin-bottom: 6px;
+    }
+    
+    .thumbnail .item .category {
+        font-size: clamp(0.75em, 2.2vw, 0.85em);
     }
     
     .arrows button {
@@ -669,18 +942,648 @@ body {
     }
 }
 
+/* Specific fix for 770px height screens */
+@media screen and (min-height: 700px) and (max-height: 800px) and (min-width: 768px) {
+    .slider {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .featured-project {
+        height: 60vh;
+        min-height: 350px;
+        flex-shrink: 0;
+    }
+    
+    .featured-project .featured-image {
+        height: 30vh;
+        max-height: 250px;
+    }
+    
+    .projects-row {
+        height: 40vh;
+        min-height: 200px;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+    
+    .thumbnail-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Specific fix for 549px and below height screens */
+@media screen and (max-height: 650px) {
+    .slider {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+    }
+    
+    .featured-project {
+        height: 100vh;
+        min-height: 500px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+    
+    .featured-project .list .item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .featured-project .content {
+        width: 55%;
+        text-align: left;
+        order: 1;
+        padding: 20px;
+    }
+    
+    .featured-project .featured-image {
+        width: 40%;
+        height: 60vh;
+        max-height: 400px;
+        order: 2;
+    }
+    
+    .featured-project h1 {
+        font-size: clamp(1.8em, 4vw, 2.5em);
+        margin: 15px 0;
+    }
+    
+    .featured-project .description {
+        font-size: clamp(0.85em, 2vw, 1em);
+        margin-bottom: 20px;
+    }
+    
+    .projects-row {
+        height: 0;
+        min-height: 0;
+        flex-shrink: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        transition: all 0.5s ease;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1002;
+        background: rgba(255, 255, 255, 1);
+        backdrop-filter: blur(10px);
+    }
+    
+    .projects-row.hidden {
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        opacity: 0;
+        display: none;
+    }
+    
+    .projects-row:not(.hidden) {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 20px 20px 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 1);
+        z-index: 1002;
+    }
+    
+    .close-projects-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 2.5em;
+        color: #2c3e50;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        z-index: 1003;
+    }
+    
+    .close-projects-btn:hover {
+        background-color: rgba(44, 62, 80, 0.1);
+        transform: scale(1.1);
+    }
+    
+    .close-projects-btn:active {
+        transform: scale(0.95);
+    }
+    
+    .thumbnail-container {
+        height: auto;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        overflow: hidden;
+        z-index: 1004;
+        position: relative;
+    }
+    
+    .thumbnail {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 25px;
+        width: 100%;
+        max-width: 900px;
+        padding: 15px 0;
+        z-index: 1005;
+        position: relative;
+    }
+    
+    .thumbnail .item {
+        min-width: 250px;
+        width: 100%;
+        height: 220px;
+        margin: 0;
+        z-index: 1006;
+        position: relative;
+    }
+    
+    .thumbnail .item-content {
+        padding: 15px;
+    }
+    
+    .thumbnail .item h3 {
+        font-size: clamp(1em, 2.5vw, 1.2em);
+        margin-bottom: 8px;
+    }
+    
+    .thumbnail .item .category {
+        font-size: clamp(0.8em, 2vw, 0.9em);
+    }
+    
+    /* Show toggle button for 549px and below height screens */
+    .thumbnail-toggle-container {
+        display: block;
+    }
+}
+
+/* Specific fix for 650px-850px height screens - Vertical Layout */
+@media screen and (min-height: 650px) and (max-height: 850px) {
+    .slider {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+    }
+    
+    .featured-project {
+        height: 100vh;
+        min-height: 600px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+    
+    .featured-project .list .item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .featured-project .content {
+        width: 55%;
+        text-align: left;
+        order: 1;
+        padding: 20px;
+    }
+    
+    .featured-project .featured-image {
+        width: 40%;
+        height: 60vh;
+        max-height: 450px;
+        order: 2;
+    }
+    
+    .featured-project h1 {
+        font-size: clamp(2em, 4vw, 3em);
+        margin: 15px 0;
+    }
+    
+    .featured-project .description {
+        font-size: clamp(0.9em, 2vw, 1.1em);
+        margin-bottom: 20px;
+    }
+    
+    .projects-row {
+        height: 0;
+        min-height: 0;
+        flex-shrink: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        transition: all 0.5s ease;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1002;
+        background: rgba(255, 255, 255, 1);
+    }
+    
+    .projects-row.hidden {
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        opacity: 0;
+        display: none;
+    }
+    
+    .projects-row:not(.hidden) {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 20px 20px 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 1);
+        z-index: 1002;
+    }
+    
+    .close-projects-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 2.5em;
+        color: #2c3e50;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        z-index: 1003;
+    }
+    
+    .close-projects-btn:hover {
+        background-color: rgba(44, 62, 80, 0.1);
+        transform: scale(1.1);
+    }
+    
+    .close-projects-btn:active {
+        transform: scale(0.95);
+    }
+    
+    .thumbnail-container {
+        height: calc(100vh - 80px);
+        width: 100%;
+        max-width: 1400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        overflow: hidden;
+        z-index: 1004;
+        position: relative;
+    }
+    
+    .thumbnail {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 50px;
+        width: 100%;
+        max-width: 1300px;
+        height: 100%;
+        padding: 30px 0;
+        z-index: 1005;
+        position: relative;
+        align-items: center;
+    }
+    
+    .thumbnail .item {
+        min-width: 350px;
+        width: 100%;
+        height: 100%;
+        max-height: calc((100vh - 160px) / 2);
+        margin: 0;
+        z-index: 1006;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+    
+    .thumbnail .item-content {
+        padding: 15px;
+    }
+    
+    .thumbnail .item h3 {
+        font-size: clamp(1em, 2.5vw, 1.2em);
+        margin-bottom: 8px;
+    }
+    
+    .thumbnail .item .category {
+        font-size: clamp(0.8em, 2vw, 0.9em);
+    }
+    
+    /* Show toggle button for 650px-850px height screens */
+    .thumbnail-toggle-container {
+        display: block;
+    }
+    
+    /* Enhanced thumbnail styling for 650px-850px height */
+    .thumbnail .item img {
+        width: 100%;
+        height: 70%;
+        object-fit: cover;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    .thumbnail .item-content {
+        padding: 25px;
+        background: white;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .thumbnail .item h3 {
+        font-size: clamp(1.4em, 3.5vw, 1.8em);
+        margin-bottom: 10px;
+        font-weight: 700;
+        color: #2c3e50;
+    }
+    
+    .thumbnail .item .category {
+        font-size: clamp(1em, 2.5vw, 1.2em);
+        color: #666;
+        font-weight: 400;
+    }
+    
+    /* Adjust projects row padding for better height fit */
+    .projects-row:not(.hidden) {
+        padding: 80px 20px 20px 20px;
+    }
+}
+
+/* Specific fix for 667px height screens */
+@media screen and (min-height: 600px) and (max-height: 700px) {
+    .slider {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+    }
+    
+    .featured-project {
+        height: 85vh;
+        min-height: 500px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+    
+    .featured-project .featured-image {
+        height: 45vh;
+        max-height: 350px;
+    }
+    
+    .projects-row {
+        height: 15vh;
+        min-height: 100px;
+        flex-shrink: 0;
+        overflow: hidden;
+        margin-top: 0;
+        transition: all 0.5s ease;
+    }
+    
+    .projects-row.hidden {
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        opacity: 0;
+    }
+    
+    .thumbnail-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+    }
+    
+    .thumbnail {
+        padding: 10px 0;
+    }
+    
+    .thumbnail .item {
+        min-width: 160px;
+        width: 160px;
+        height: 100px;
+    }
+    
+    /* Show toggle button for 667px height screens */
+    .thumbnail-toggle-container {
+        display: block;
+    }
+}
+
+/* Specific fix for 750px height screens */
+@media screen and (min-height: 700px) and (max-height: 800px) {
+    .slider {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+    }
+    
+    .featured-project {
+        height: 100vh;
+        min-height: 600px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+    
+    .featured-project .featured-image {
+        height: 50vh;
+        max-height: 400px;
+    }
+    
+    .projects-row {
+        height: 0;
+        min-height: 0;
+        flex-shrink: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        transition: all 0.5s ease;
+        opacity: 0;
+    }
+    
+    .projects-row.hidden {
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        opacity: 0;
+        display: none;
+    }
+    
+    .projects-row:not(.hidden) {
+        height: 20vh;
+        min-height: 150px;
+        opacity: 1;
+        display: block;
+    }
+    
+    .thumbnail-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+    }
+    
+    .thumbnail {
+        padding: 15px 0;
+    }
+    
+    .thumbnail .item {
+        min-width: 180px;
+        width: 180px;
+        height: 110px;
+    }
+    
+    /* Show toggle button for 750px height screens */
+    .thumbnail-toggle-container {
+        display: block;
+    }
+}
+
+/* Specific fix for 800px height screens */
+@media screen and (min-height: 800px) and (max-height: 900px) {
+    .slider {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+    }
+    
+    .featured-project {
+        height: 85vh;
+        min-height: 600px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+    
+    .featured-project .featured-image {
+        height: 45vh;
+        max-height: 400px;
+    }
+    
+    .projects-row {
+        height: 15vh;
+        min-height: 150px;
+        flex-shrink: 0;
+        overflow: hidden;
+        margin-top: 0;
+        transition: all 0.5s ease;
+    }
+    
+    .projects-row.hidden {
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        opacity: 0;
+    }
+    
+    .thumbnail-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+    }
+    
+    .thumbnail {
+        padding: 15px 0;
+    }
+    
+    .thumbnail .item {
+        min-width: 200px;
+        width: 200px;
+        height: 120px;
+    }
+    
+    /* Show toggle button for 800px height screens */
+    .thumbnail-toggle-container {
+        display: block;
+    }
+}
+
 /* Landscape Orientation for Mobile */
 @media screen and (max-height: 500px) and (orientation: landscape) {
     .slider {
         padding-top: 60px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
     
     .featured-project {
-        height: auto;
-        min-height: calc(100vh - 60px);
+        height: 60vh;
+        min-height: 300px;
         flex-direction: row;
         align-items: center;
         gap: 15px;
+        flex-shrink: 0;
     }
     
     .featured-project .content {
@@ -692,21 +1595,34 @@ body {
     
     .featured-project .featured-image {
         width: 40%;
-        height: 60vh;
+        height: 50vh;
         order: 2;
-        max-height: 400px;
+        max-height: 300px;
     }
     
     .projects-row {
         padding: 10px 20px;
+        flex-shrink: 0;
+        height: 40vh;
+        min-height: 200px;
+        overflow: hidden;
     }
     
     .thumbnail .item {
-        height: 100px;
+        height: 80px;
+        min-width: 140px;
+        width: 140px;
     }
     
     .thumbnail-container {
         padding: 0 25px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .thumbnail {
+        padding: 10px 0;
     }
 }
 
@@ -727,11 +1643,669 @@ body {
     }
 }
 
+/* Thumbnail Toggle Button Styles */
+.thumbnail-toggle-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1001;
+    display: none;
+}
+
+.thumbnail-toggle-btn {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.thumbnail-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
+}
+
+.thumbnail-toggle-btn:active {
+    transform: translateY(0);
+}
+
+.toggle-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail-toggle-btn.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Projects Row Hide/Show Animation */
+.projects-row {
+    transition: all 0.5s ease;
+}
+
+.projects-row.hidden {
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    opacity: 0;
+}
+
+/* Ensure thumbnails are never covered in responsive designs */
+.projects-row:not(.hidden) .thumbnail-container,
+.projects-row:not(.hidden) .thumbnail,
+.projects-row:not(.hidden) .thumbnail .item {
+    z-index: 1004 !important;
+    position: relative !important;
+}
+
+/* Force larger sizes for under 650px height range */
+@media screen and (max-height: 649px) {
+    .projects-row:not(.hidden) .thumbnail-container {
+        height: calc(100vh - 60px) !important;
+        max-width: 1200px !important;
+        overflow: visible !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail {
+        max-width: 1100px !important;
+        gap: clamp(20px, 3vh, 40px) !important;
+        padding: clamp(10px, 1.5vh, 20px) 0 !important;
+        height: auto !important;
+        min-height: calc(100vh - 100px) !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item {
+        min-width: 300px !important;
+        height: clamp(200px, calc((100vh - 150px) / 2), 350px) !important;
+        min-height: 200px !important;
+        max-height: 350px !important;
+        border-radius: 15px !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item img {
+        height: 70% !important;
+        object-fit: cover !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item-content {
+        padding: clamp(10px, 1.5vh, 20px) !important;
+        height: 30% !important;
+        min-height: 60px !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item h3 {
+        font-size: clamp(1em, 2.2vw, 1.4em) !important;
+        margin-bottom: clamp(3px, 0.8vh, 8px) !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item .category {
+        font-size: clamp(0.8em, 1.8vw, 1em) !important;
+    }
+}
+
+/* Optimized layout for 550px and below height */
+@media screen and (max-height: 550px) {
+    .projects-row:not(.hidden) {
+        padding: 10px 20px !important;
+        height: 100vh !important;
+        overflow: hidden !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail-container {
+        height: calc(100vh - 40px) !important;
+        max-width: 1000px !important;
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail {
+        max-width: 900px !important;
+        gap: clamp(15px, 2.5vh, 30px) !important;
+        padding: clamp(8px, 1vh, 15px) 0 !important;
+        height: auto !important;
+        min-height: calc(100vh - 80px) !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-rows: repeat(2, 1fr) !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item {
+        min-width: 250px !important;
+        height: clamp(160px, calc((100vh - 120px) / 2), 280px) !important;
+        min-height: 160px !important;
+        max-height: 280px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08) !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item img {
+        height: 65% !important;
+        object-fit: cover !important;
+        border-radius: 12px 12px 0 0 !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item-content {
+        padding: clamp(8px, 1vh, 15px) !important;
+        height: 35% !important;
+        min-height: 50px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item h3 {
+        font-size: clamp(0.9em, 2vw, 1.2em) !important;
+        margin-bottom: clamp(2px, 0.5vh, 6px) !important;
+        line-height: 1.2 !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item .category {
+        font-size: clamp(0.75em, 1.6vw, 0.9em) !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* Ensure close button is visible and accessible */
+    .projects-row:not(.hidden) .close-projects-btn {
+        top: 15px !important;
+        right: 25px !important;
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 20px !important;
+        z-index: 1003 !important;
+    }
+}
+
+/* Force larger sizes for 650-850px height range */
+@media screen and (min-height: 650px) and (max-height: 850px) {
+    .projects-row:not(.hidden) .thumbnail-container {
+        height: calc(100vh - 80px) !important;
+        max-width: 1400px !important;
+        overflow: visible !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail {
+        max-width: 1300px !important;
+        gap: clamp(30px, 4vh, 50px) !important;
+        padding: clamp(15px, 2vh, 30px) 0 !important;
+        height: auto !important;
+        min-height: calc(100vh - 120px) !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item {
+        min-width: 350px !important;
+        height: clamp(280px, calc((100vh - 200px) / 2), 400px) !important;
+        min-height: 280px !important;
+        max-height: 400px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15) !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item img {
+        height: 70% !important;
+        object-fit: cover !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item-content {
+        padding: clamp(15px, 2vh, 25px) !important;
+        height: 30% !important;
+        min-height: 80px !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item h3 {
+        font-size: clamp(1.2em, 2.5vw, 1.6em) !important;
+        margin-bottom: clamp(5px, 1vh, 10px) !important;
+    }
+    
+    .projects-row:not(.hidden) .thumbnail .item .category {
+        font-size: clamp(0.9em, 2vw, 1.1em) !important;
+    }
+}
+
 /* High DPI Screens */
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     .featured-project .featured-image,
     .thumbnail .item {
         image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Hide close button when projects row is hidden */
+.projects-row.hidden .close-projects-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Specific fix for 851px-900px height range to ensure projects-row visibility */
+@media screen and (min-height: 851px) and (max-height: 900px) {
+    .thumbnail-toggle-container {
+        display: none !important;
+    }
+    
+    .close-projects-btn {
+        display: none !important;
+    }
+    
+    /* Override conflicting styles from 800px-900px media query */
+    .slider {
+        min-height: auto !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        padding-top: 0 !important;
+    }
+    
+    .featured-project {
+        height: auto !important;
+        min-height: 60vh !important;
+        max-height: 70vh !important;
+        flex-shrink: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .featured-project .featured-image {
+        height: auto !important;
+        max-height: none !important;
+    }
+    
+    /* Force projects row to be visible and properly sized */
+    .projects-row {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative !important;
+        height: auto !important;
+        min-height: 200px !important;
+        max-height: none !important;
+        overflow: visible !important;
+        background: transparent !important;
+        z-index: auto !important;
+        margin-top: 20px !important;
+        padding: 20px 0 !important;
+        flex-shrink: 0 !important;
+        transition: none !important;
+    }
+    
+    .projects-row.hidden {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+        min-height: 200px !important;
+        margin: 20px 0 0 0 !important;
+        padding: 20px 0 !important;
+        overflow: visible !important;
+    }
+    
+    .thumbnail-container {
+        height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 40px !important;
+        max-width: 1200px !important;
+    }
+    
+    .thumbnail {
+        padding: 15px 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 20px !important;
+        width: 100% !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+    }
+    
+    .thumbnail .item {
+        min-width: 200px !important;
+        width: 200px !important;
+        height: 150px !important;
+        border-radius: 15px !important;
+        overflow: hidden !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+/* Hide toggle button and close button for 901px and above height */
+@media screen and (min-height: 901px) {
+    .thumbnail-toggle-container {
+        display: none !important;
+    }
+    
+    .close-projects-btn {
+        display: none !important;
+    }
+    
+    /* Ensure projects row is always visible */
+    .projects-row {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: transparent !important;
+        z-index: auto !important;
+    }
+    
+    .projects-row.hidden {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}
+
+/* Unified full-window thumbnail overlay for all responsive devices */
+body.projects-overlay-open {
+    overflow: hidden;
+}
+
+.thumbnail-toggle-container {
+    display: block !important;
+    z-index: 1200 !important;
+}
+
+.projects-row {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 1100 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    margin: 0 !important;
+    padding: 76px 20px 20px !important;
+    overflow: hidden !important;
+}
+
+.projects-row:not(.hidden) {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.projects-row.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+}
+
+.projects-row .close-projects-btn {
+    display: flex !important;
+    position: absolute !important;
+    top: 14px !important;
+    right: 18px !important;
+    z-index: 1201 !important;
+}
+
+.projects-row .thumbnail-container {
+    width: 100% !important;
+    max-width: 1200px !important;
+    height: 100% !important;
+    padding: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.projects-row .thumbnail {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    padding: 8px 0 18px !important;
+    transform: none !important;
+}
+
+.projects-row .thumbnail .item {
+    min-width: 0 !important;
+    width: 100% !important;
+    height: clamp(140px, 22vw, 210px) !important;
+    max-width: none !important;
+}
+
+.projects-row .arrows {
+    display: none !important;
+}
+
+@media screen and (max-width: 700px) {
+    .projects-row {
+        padding: 66px 14px 14px !important;
+    }
+
+    .projects-row .thumbnail-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .projects-row .thumbnail {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+        max-width: 100% !important;
+    }
+
+    .projects-row .thumbnail .item {
+        width: 100% !important;
+        height: min(48vh, 340px) !important;
+        max-width: none !important;
+    }
+
+    .projects-row .thumbnail .item img {
+        height: 72% !important;
+        object-fit: cover !important;
+    }
+
+    .projects-row .thumbnail .item-content {
+        min-height: 28% !important;
+        padding: 14px !important;
+    }
+}
+
+/* Use two-row multi-column showcase when height allows */
+@media screen and (min-height: 546px) {
+    .projects-row .thumbnail {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)) !important;
+        grid-template-rows: repeat(2, minmax(150px, 1fr)) !important;
+        grid-auto-flow: column !important;
+        gap: 16px !important;
+        max-width: 1200px !important;
+    }
+
+    .projects-row .thumbnail .item {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: clamp(150px, 22vh, 230px) !important;
+        max-width: none !important;
+    }
+}
+
+/* Larger showcase cards for very large square/tall viewports */
+@media screen and (min-width: 1100px) and (min-height: 1100px) {
+    .projects-row {
+        padding: 88px 34px 34px !important;
+    }
+
+    .projects-row .thumbnail-container {
+        max-width: 1480px !important;
+    }
+
+    .projects-row .thumbnail {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        grid-template-rows: repeat(2, minmax(210px, 1fr)) !important;
+        gap: 24px !important;
+        max-width: 1480px !important;
+        padding: 16px 0 28px !important;
+    }
+
+    .projects-row .thumbnail .item {
+        height: clamp(220px, 24vh, 320px) !important;
+        border-radius: 16px !important;
+    }
+
+    .projects-row .thumbnail .item-content {
+        padding: 18px !important;
+    }
+
+    .projects-row .thumbnail .item h3 {
+        font-size: clamp(1.05rem, 1.1vw, 1.28rem) !important;
+    }
+
+    .projects-row .thumbnail .item .category {
+        font-size: clamp(0.8rem, 0.85vw, 0.98rem) !important;
+    }
+}
+
+/* Larger showcase images for wide + tall viewports */
+@media screen and (min-width: 900px) and (min-height: 700px) {
+    .projects-row .thumbnail {
+        grid-template-columns: repeat(auto-fit, minmax(252px, 1fr)) !important;
+        grid-template-rows: repeat(2, minmax(189px, 1fr)) !important;
+        gap: 18px !important;
+        max-width: 1320px !important;
+    }
+
+    .projects-row .thumbnail .item {
+        height: clamp(210px, 27.3vh, 305px) !important;
+        border-radius: 14px !important;
+    }
+
+    .projects-row .thumbnail .item img {
+        height: 74% !important;
+        object-fit: cover !important;
+    }
+
+    .projects-row .thumbnail .item-content {
+        min-height: 26% !important;
+        padding: 16px !important;
+    }
+}
+
+/* Final close button design override for overlay UI */
+.projects-row .close-projects-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: 14px !important;
+    right: 16px !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    background: rgba(44, 62, 80, 0.9) !important;
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    font-weight: 600 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+    cursor: pointer !important;
+    z-index: 1202 !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.projects-row .close-projects-btn:hover {
+    background: rgba(28, 42, 56, 0.95) !important;
+    transform: translateY(-1px) scale(1.04) !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28) !important;
+}
+
+.projects-row .close-projects-btn:active {
+    transform: scale(0.96) !important;
+}
+
+@media screen and (max-width: 480px) {
+    .projects-row .close-projects-btn {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1.35rem !important;
+        top: 12px !important;
+        right: 12px !important;
+    }
+}
+
+/* Keep featured image corners consistent across all breakpoints */
+.featured-project .featured-image,
+.featured-project .featured-image img {
+    border-radius: 25px !important;
+}
+
+/* Global toggle behavior across all responsive devices */
+.thumbnail-toggle-container {
+    display: block !important;
+}
+
+.close-projects-btn {
+    display: block !important;
+}
+
+.projects-row.hidden {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    overflow: hidden !important;
+}
+
+/* Keep thumbnail slider as overlay for desktop widths too */
+@media screen and (min-width: 1002px) {
+    .projects-row {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        z-index: 1002 !important;
+        background: rgba(255, 255, 255, 1) !important;
+        display: none !important;
+        opacity: 0 !important;
+        overflow: hidden !important;
+        padding: 70px 24px 24px !important;
+        margin: 0 !important;
+    }
+
+    .projects-row:not(.hidden) {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        opacity: 1 !important;
+    }
+
+    .projects-row .thumbnail-container {
+        width: 100% !important;
+        max-width: 1200px !important;
+        height: auto !important;
+        padding: 0 40px !important;
+        overflow: hidden !important;
     }
 }
 

@@ -226,6 +226,14 @@
 .scroll-arrow {
     width: 20px;
     height: 20px;
+    transform: rotate(45deg);
+    margin: 1rem auto;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down-arrow {
+    width: 20px;
+    height: 20px;
     border-right: 2px solid #666;
     border-bottom: 2px solid #666;
     transform: rotate(45deg);

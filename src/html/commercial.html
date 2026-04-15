@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="featured-image">
-                        <img src="../../assets/horizontal-2dcaffee.jpg" alt="2D Caffe">
+                        <img src="../../assets/2dcaffee-caro.jpg" alt="2D Caffe">
                     </div>
                 </div>
                 <div class="item">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="featured-image">
-                        <img src="../../assets/mohdchan.png" alt="Mohd Chan">
+                        <img src="../../assets/mohdchan-caro.jpg" alt="Mohd Chan">
                     </div>
                 </div>
                 <div class="item">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="featured-image">
-                        <img src="../../assets/miniso.png" alt="Miniso">
+                        <img src="../../assets/miniso-caro.jpg" alt="Miniso">
                     </div>
                 </div>
                 <div class="item">
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="featured-image">
-                        <img src="../../assets/clinic.png" alt="Clinic Amal Siti">
+                        <img src="../../assets/klinik-caro.jpg" alt="Clinic Amal Siti">
                     </div>
                 </div>
                 <div class="item">
@@ -98,76 +98,52 @@
                         </div>
                     </div>
                     <div class="featured-image">
-                        <img src="../../assets/snowflake.png" alt="Snow Flake">
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="content">
-                        <span class="category">Office Design</span>
-                        <h1>MINISO HQ</h1>
-                        <p class="description">
-                            Modern office space that brings kampung house style into a corporate environment, using steel and timber elements for a unique blend of tradition and innovation.
-                        </p>
-                        <div class="cta-group">
-                            <button class="cta-button primary" onclick="window.location.href='minisohq.html'">
-                                <span class="icon">▶</span>View Project
-                            </button>
-                        </div>
-                    </div>
-                    <div class="featured-image">
-                        <img src="../../assets/minisohq-section1.png" alt="MINISO HQ">
+                        <img src="../../assets/snowflake-caro.jpg" alt="Snow Flake">
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Project Thumbnails -->
-        <div class="projects-row">
-            <h2>Featured Projects</h2>
+        <div class="projects-row" id="projects-row">
+            <button class="close-projects-btn" id="close-projects-btn">×</button>
             <div class="thumbnail-container">
                 <div class="thumbnail">
-                    <div class="item active" data-index="0">
+                    <a class="item active" data-index="0" href="2dcaffe.html">
                         <img src="../../assets/2dcaffe.png" alt="2D Caffe">
                         <div class="item-content">
                             <h3>2D CAFFE</h3>
                             <span class="category">Interior Design</span>
                         </div>
-                    </div>
-                    <div class="item" data-index="1">
+                    </a>
+                    <a class="item" data-index="1" href="mohdchan.html">
                         <img src="../../assets/mohdchan.png" alt="Mohd Chan">
                         <div class="item-content">
                             <h3>MOHD CHAN</h3>
                             <span class="category">Restaurant Design</span>
                         </div>
-                    </div>
-                    <div class="item" data-index="2">
+                    </a>
+                    <a class="item" data-index="2" href="miniso.html">
                         <img src="../../assets/miniso.png" alt="Miniso">
                         <div class="item-content">
                             <h3>MINISO</h3>
                             <span class="category">Retail Design</span>
                         </div>
-                    </div>
-                    <div class="item" data-index="3">
+                    </a>
+                    <a class="item" data-index="3" href="klinik.html">
                         <img src="../../assets/clinic.png" alt="Clinic Amal Siti">
                         <div class="item-content">
                             <h3>CLINIC AMAL SITI</h3>
                             <span class="category">Healthcare Design</span>
                         </div>
-                    </div>
-                    <div class="item" data-index="4">
+                    </a>
+                    <a class="item" data-index="4" href="snowflake.html">
                         <img src="../../assets/snowflake.png" alt="Snow Flake">
                         <div class="item-content">
                             <h3>SNOW FLAKE</h3>
                             <span class="category">Commercial Design</span>
                         </div>
-                    </div>
-                    <div class="item" data-index="5">
-                        <img src="../../assets/minisohq-section1.png" alt="MINISO HQ">
-                        <div class="item-content">
-                            <h3>MINISO HQ</h3>
-                            <span class="category">Office Design</span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <!-- Navigation Arrows -->
                 <div class="arrows">
@@ -175,6 +151,14 @@
                     <button id="next">→</button>
                 </div>
             </div>
+        </div>
+
+        <!-- Thumbnail Toggle Button -->
+        <div class="thumbnail-toggle-container" id="thumbnail-toggle">
+            <button class="thumbnail-toggle-btn" id="thumbnail-toggle-btn">
+                <span class="toggle-icon">▼</span>
+                <span class="toggle-text">Show Projects</span>
+            </button>
         </div>
     </div>
 

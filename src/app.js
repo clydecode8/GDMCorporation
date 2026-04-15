@@ -8,8 +8,10 @@ async function loadHeaderComponent() {
         // Add scroll effect to header after loading
         initHeaderScrollEffect();
         
-        // Initialize mobile menu after loading
-        initMobileMenu();
+        // Initialize mobile menu after loading with a small delay
+        setTimeout(() => {
+            initMobileMenu();
+        }, 100);
     } catch (error) {
         console.error('Error loading header component:', error);
     }
@@ -29,40 +31,72 @@ function initHeaderScrollEffect() {
     });
 }
 
-// Mobile menu functionality
+// Hamburger menu functionality
 function initMobileMenu() {
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
     const mainNav = document.getElementById('main-nav');
     
-    if (!mobileMenuToggle || !mainNav) return;
+    if (!hamburgerMenu || !mainNav) {
+        console.log('Hamburger menu or navigation not found');
+        return;
+    }
     
-    mobileMenuToggle.addEventListener('click', () => {
-        mobileMenuToggle.classList.toggle('active');
+    console.log('Initializing hamburger menu');
+    
+    // Ensure menu starts in closed state
+    hamburgerMenu.classList.remove('active');
+    mainNav.classList.remove('active');
+    document.body.style.overflow = '';
+    
+    hamburgerMenu.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('Hamburger menu clicked');
+        
+        hamburgerMenu.classList.toggle('active');
         mainNav.classList.toggle('active');
-    });
-    
-    // Close mobile menu when clicking on nav links
-    const navLinks = mainNav.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuToggle.classList.remove('active');
-            mainNav.classList.remove('active');
-        });
-    });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!mobileMenuToggle.contains(e.target) && !mainNav.contains(e.target)) {
-            mobileMenuToggle.classList.remove('active');
-            mainNav.classList.remove('active');
+        
+        // Prevent body scroll when menu is open
+        if (mainNav.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            console.log('Menu opened');
+        } else {
+            document.body.style.overflow = '';
+            console.log('Menu closed');
         }
     });
     
-    // Close mobile menu on window resize if screen gets larger
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 479) {
-            mobileMenuToggle.classList.remove('active');
+    // Close hamburger menu when clicking on nav links
+    const navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            console.log('Nav link clicked, closing menu');
+            hamburgerMenu.classList.remove('active');
             mainNav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close hamburger menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (mainNav.classList.contains('active') && 
+            !hamburgerMenu.contains(e.target) && 
+            !mainNav.contains(e.target)) {
+            console.log('Clicked outside, closing menu');
+            hamburgerMenu.classList.remove('active');
+            mainNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close hamburger menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+            console.log('Escape pressed, closing menu');
+            hamburgerMenu.classList.remove('active');
+            mainNav.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 }
@@ -86,7 +120,14 @@ function initCarousel() {
     
     // Add click events to thumbnails
     thumbnailItems.forEach((thumbnail, index) => {
-        thumbnail.addEventListener('click', () => {
+        thumbnail.addEventListener('click', (event) => {
+            const targetLink = thumbnail.getAttribute('href') || thumbnail.dataset.link;
+            if (targetLink) {
+                event.preventDefault();
+                window.location.href = targetLink;
+                return;
+            }
+
             currentSlide = index;
             updateSlide(currentSlide);
             handleUserInteraction();
@@ -192,6 +233,11 @@ let thumbnailContainer = document.querySelector('.thumbnail-container');
 
 function initDragScroll() {
     if (!thumbnail || !thumbnailContainer) return;
+    
+    // Disable drag scrolling for screens 800px and below
+    if (window.innerWidth <= 800) {
+        return;
+    }
     
     // Prevent default drag behavior on images
     thumbnail.querySelectorAll('img').forEach(img => {
@@ -310,6 +356,11 @@ function setTransform() {
 
 // Simple scroll for arrow buttons
 function scrollThumbnails(direction) {
+    // Disable horizontal scrolling for screens 800px and below
+    if (window.innerWidth <= 800) {
+        return;
+    }
+    
     const scrollAmount = 300; // Scroll by 300px
     
     if (direction === 'next') {
@@ -337,6 +388,48 @@ function scrollThumbnails(direction) {
     }, 300);
 }
 
+// Thumbnail toggle functionality
+function initThumbnailToggle() {
+    const toggleBtn = document.getElementById('thumbnail-toggle-btn');
+    const projectsRow = document.getElementById('projects-row');
+    const toggleText = document.querySelector('.toggle-text');
+    const toggleContainer = document.getElementById('thumbnail-toggle');
+    
+    if (!toggleBtn || !projectsRow || !toggleText || !toggleContainer) return;
+
+    function setProjectsVisibility(showProjects) {
+        if (showProjects) {
+            projectsRow.classList.remove('hidden');
+            toggleBtn.classList.add('active');
+            toggleText.textContent = 'Hide Projects';
+            document.body.classList.add('projects-overlay-open');
+        } else {
+            projectsRow.classList.add('hidden');
+            toggleBtn.classList.remove('active');
+            toggleText.textContent = 'Show Projects';
+            document.body.classList.remove('projects-overlay-open');
+        }
+    }
+    
+    // Toggle functionality
+    toggleBtn.addEventListener('click', () => {
+        const isHidden = projectsRow.classList.contains('hidden');
+        setProjectsVisibility(isHidden);
+    });
+    
+    // Close button functionality
+    const closeBtn = document.getElementById('close-projects-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            setProjectsVisibility(false);
+        });
+    }
+
+    // Ensure overlay toggle is always available on all device sizes.
+    toggleContainer.style.display = 'block';
+    setProjectsVisibility(false);
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     // Load header component first
@@ -345,6 +438,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Then initialize other components
     initCarousel();
     initDragScroll();
+    initThumbnailToggle();
 });
 
 // Pause auto-slide when page is not visible
@@ -358,6 +452,9 @@ document.addEventListener('visibilitychange', () => {
 
 // Handle window resize
 window.addEventListener('resize', () => {
+    // Reinitialize drag scroll based on screen width
+    initDragScroll();
+    
     // Reset position if needed
     const maxTranslate = 0;
     const minTranslate = -(thumbnail.scrollWidth - thumbnailContainer.offsetWidth);
