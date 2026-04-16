@@ -7,7 +7,7 @@
 }
 
 .philosophy-bg {
-    background: url('../../assets/philbg.png') center/cover no-repeat fixed;
+    background: url('../assets/philbg.png') center/cover no-repeat fixed;
     opacity: 1;
 }
 

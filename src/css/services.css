@@ -14,7 +14,7 @@
 }
 
 .services-bg {
-    background: url('../../assets/services.png') center center/cover no-repeat;
+    background: url('../assets/services.png') center center/cover no-repeat;
     opacity: 0.1;
 }
 

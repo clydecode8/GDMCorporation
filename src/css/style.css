@@ -550,7 +550,7 @@ body {
 }
 
 .philosophy-bg {
-  background: url('../../assets/philbg.png') center/cover no-repeat fixed;
+  background: url('../assets/philbg.png') center/cover no-repeat fixed;
   position: absolute;
   top: 0;
   left: 0;
@@ -2248,7 +2248,7 @@ body {
 /* High DPI displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .hero-section {
-    background-image: url('../../assets/GDM-PORTFOLIO.pdf.png');
+    background-image: url('../assets/GDM-PORTFOLIO.pdf.png');
   }
   
   .side-image {
