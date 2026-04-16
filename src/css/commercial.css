@@ -93,6 +93,7 @@ body::before {
     width: 50%;
     max-width: 600px;
     padding: clamp(20px, 4vw, 50px);
+    padding-top: clamp(42px, 6vh, 78px);
 }
 
 .featured-project .category {
@@ -2255,6 +2256,165 @@ body.projects-overlay-open {
     border-radius: 25px !important;
 }
 
+/* Medium-sized featured project scaling for large resolutions */
+@media screen and (min-width: 1400px) and (min-height: 760px) {
+    .featured-project {
+        height: calc(88vh - 80px) !important;
+        min-height: 520px !important;
+        max-width: 1680px;
+        margin: 0 auto;
+    }
+
+    .featured-project .list .item {
+        padding: 0 3.5% !important;
+        align-items: center !important;
+    }
+
+    .featured-project .content {
+        width: 54% !important;
+        max-width: 760px !important;
+        max-height: min(78vh, 760px);
+        padding: clamp(34px, 3.2vw, 56px) !important;
+    }
+
+    .featured-project .category {
+        font-size: clamp(0.85rem, 0.9vw, 1rem) !important;
+        letter-spacing: 2.4px !important;
+    }
+
+    .featured-project h1 {
+        font-size: clamp(2.6rem, 3.8vw, 4.1rem) !important;
+        margin: 16px 0 18px !important;
+        line-height: 1.08 !important;
+    }
+
+    .featured-project .description {
+        font-size: clamp(1rem, 1.18vw, 1.2rem) !important;
+        line-height: 1.62 !important;
+        max-width: 60ch;
+        margin-bottom: 28px !important;
+    }
+
+    .featured-project .featured-image {
+        width: 46% !important;
+        max-width: 700px !important;
+        max-height: min(80vh, 760px) !important;
+        height: min(74vh, 720px) !important;
+        overflow: hidden !important;
+    }
+
+    .featured-project .featured-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+}
+
+/* Ultra-large viewports (around 2000x2000 and above) */
+@media screen and (min-width: 2000px) and (min-height: 2000px) {
+    .featured-project {
+        max-width: 2200px !important;
+        min-height: 980px !important;
+    }
+
+    .featured-project .content {
+        width: 56% !important;
+        max-width: 1080px !important;
+        max-height: 1200px !important;
+        padding: clamp(52px, 3.2vw, 82px) !important;
+        padding-top: clamp(70px, 7.2vh, 120px) !important;
+    }
+
+    .featured-project h1 {
+        font-size: clamp(3.4rem, 3.8vw, 5.2rem) !important;
+    }
+
+    .featured-project .description {
+        font-size: clamp(1.22rem, 1.35vw, 1.52rem) !important;
+        max-width: 66ch !important;
+    }
+
+    .featured-project .featured-image {
+        width: 44% !important;
+        max-width: 980px !important;
+        max-height: 1200px !important;
+        height: min(72vh, 1120px) !important;
+    }
+}
+
+/* Massive displays (around 3000x3000 and above) */
+@media screen and (min-width: 3000px) and (min-height: 3000px) {
+    .featured-project {
+        max-width: 3200px !important;
+        min-height: 1380px !important;
+    }
+
+    .featured-project .content {
+        max-width: 1500px !important;
+        max-height: 1700px !important;
+        padding: clamp(72px, 3.6vw, 130px) !important;
+        padding-top: clamp(95px, 8vh, 165px) !important;
+    }
+
+    .featured-project h1 {
+        font-size: clamp(4.3rem, 4.1vw, 6.6rem) !important;
+    }
+
+    .featured-project .description {
+        font-size: clamp(1.5rem, 1.5vw, 1.9rem) !important;
+        max-width: 70ch !important;
+    }
+
+    .featured-project .featured-image {
+        max-width: 1380px !important;
+        max-height: 1700px !important;
+        height: min(74vh, 1600px) !important;
+    }
+}
+
+/* Final mobile stack override for most iPhone/Samsung devices */
+@media screen and (max-width: 1024px) {
+    .featured-project .list .item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 14px !important;
+        padding: 0 12px !important;
+    }
+
+    .featured-project .featured-image {
+        order: 1 !important;
+        width: 100% !important;
+        max-width: 460px !important;
+        height: min(42vh, 320px) !important;
+        margin: 0 auto !important;
+    }
+
+    .featured-project .content {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: 540px !important;
+        text-align: center !important;
+        padding: 10px 8px !important;
+    }
+
+    .featured-project .content .cta-group {
+        order: 3 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 10px !important;
+    }
+}
+
+/* iPhone-sized devices: move Show Projects button downward */
+@media screen and (max-width: 480px) {
+    .thumbnail-toggle-container {
+        bottom: 0 !important;
+    }
+}
+
 /* Global toggle behavior across all responsive devices */
 .thumbnail-toggle-container {
     display: block !important;
@@ -2306,6 +2466,146 @@ body.projects-overlay-open {
         height: auto !important;
         padding: 0 40px !important;
         overflow: hidden !important;
+    }
+}
+
+/* Keep Show Projects below View Project on mobile devices */
+@media screen and (max-width: 1024px) {
+    .thumbnail-toggle-container {
+        position: static !important;
+        inset: auto !important;
+        bottom: auto !important;
+        right: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        padding: 8px 12px 16px !important;
+        margin-top: 8px !important;
+        z-index: auto !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .thumbnail-toggle-container .thumbnail-toggle-btn {
+        width: min(100%, 260px) !important;
+        justify-content: center !important;
+    }
+}
+
+/* Final layout stabilization overrides */
+@media screen and (min-width: 768px) {
+    .slider {
+        padding-bottom: 24px !important;
+    }
+
+    .featured-project {
+        height: calc(100vh - 150px) !important;
+        min-height: 520px !important;
+        padding: 20px 28px 36px !important;
+        overflow: visible !important;
+    }
+
+    .featured-project .list .item {
+        align-items: flex-start !important;
+        justify-content: space-between !important;
+        gap: 28px !important;
+        padding: 10px 2% 0 !important;
+    }
+
+    .featured-project .content {
+        width: 52% !important;
+        max-width: 700px !important;
+        padding: 18px 10px 18px 0 !important;
+    }
+
+    .featured-project .description {
+        display: block !important;
+        max-width: 58ch !important;
+        margin-bottom: 22px !important;
+    }
+
+    .featured-project .featured-image {
+        width: 46% !important;
+        max-width: 680px !important;
+        height: min(64vh, 560px) !important;
+    }
+
+    .cta-group {
+        margin-top: 6px !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .slider {
+        padding-bottom: 22px !important;
+    }
+
+    .featured-project {
+        min-height: calc(100vh - 170px) !important;
+        padding: 16px 12px 30px !important;
+        gap: 16px !important;
+    }
+
+    .featured-project .featured-image {
+        height: min(30vh, 220px) !important;
+        max-height: 220px !important;
+    }
+
+    .featured-project .content {
+        padding: 8px 6px 14px !important;
+    }
+
+    .featured-project .description {
+        margin-bottom: 16px !important;
+    }
+
+    .cta-group {
+        margin-bottom: 8px !important;
+    }
+
+    .thumbnail-toggle-container {
+        position: static !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        padding: 10px 12px 24px !important;
+        margin-top: 6px !important;
+    }
+}
+
+/* Landscape centering fix for iPad and mobile devices */
+@media screen and (max-width: 1366px) and (orientation: landscape) {
+    .featured-project .list .item {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 14px !important;
+        padding: 0 12px 8px !important;
+    }
+
+    .featured-project .featured-image {
+        width: 100% !important;
+        max-width: 520px !important;
+        margin: 0 auto !important;
+    }
+
+    .featured-project .content {
+        width: 100% !important;
+        max-width: 620px !important;
+        margin: 0 auto !important;
+        padding: 8px 10px 14px !important;
+        text-align: center !important;
+    }
+
+    .featured-project .description {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .featured-project .cta-group {
+        justify-content: center !important;
     }
 }
 
