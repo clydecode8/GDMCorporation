@@ -105,7 +105,7 @@
         </div>
 
         <!-- Project Thumbnails -->
-        <div class="projects-row" id="projects-row">
+        <div class="projects-row hidden" id="projects-row">
             <button class="close-projects-btn" id="close-projects-btn">×</button>
             <div class="thumbnail-container">
                 <div class="thumbnail">
@@ -145,11 +145,6 @@
                         </div>
                     </a>
                 </div>
-                <!-- Navigation Arrows -->
-                <div class="arrows">
-                    <button id="prev">←</button>
-                    <button id="next">→</button>
-                </div>
             </div>
         </div>
 
@@ -163,5 +158,18 @@
     </div>
 
     <script src="../app.js"></script>
+    <script>
+        // Fix short landscape viewports where the browser may restore/scroll
+        // past the hero top during navigation/transitions.
+        (function () {
+            try {
+                const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+                const isShort = window.matchMedia('(max-height: 450px)').matches;
+                if (isLandscape && isShort) window.scrollTo(0, 0);
+            } catch (e) {
+                // no-op
+            }
+        })();
+    </script>
 </body>
 </html>

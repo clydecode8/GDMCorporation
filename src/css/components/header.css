@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 40px;
+    padding: 26px 40px;
     background: rgba(255, 255, 255, 0.95);
     z-index: 1000;
     backdrop-filter: blur(10px);
@@ -15,25 +15,25 @@
     transition: all 0.3s ease;
     width: 100%;
     box-sizing: border-box;
-    height: 100px;
+    height: 112px;
 }
 
 .main-header.scrolled {
     background: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px 40px;
-    height: 90px;
+    padding: 18px 40px;
+    height: 100px;
 }
 
 /* Add spacing for content below fixed header */
 body {
-    padding-top: 100px;
+    padding-top: 112px;
 }
 
 /* Adjust back-link positioning to account for fixed header */
 .back-link {
     position: absolute !important;
-    top: calc(100px + 1rem) !important;
+    top: calc(112px + 1rem) !important;
     left: max(1rem, env(safe-area-inset-left, 1rem) + 0.5rem) !important;
     z-index: 999 !important;
 }
@@ -41,7 +41,7 @@ body {
 /* Adjust back-link when header is scrolled */
 .main-header.scrolled ~ * .back-link,
 .main-header.scrolled + * .back-link {
-    top: calc(90px + 1rem) !important;
+    top: calc(100px + 1rem) !important;
 }
 
 .logo {
@@ -52,14 +52,14 @@ body {
 
 .logo-image,
 .logo img {
-    height: 124px;
+    height: 146px;
     width: auto;
     transition: height 0.3s ease;
 }
 
 .main-header.scrolled .logo-image,
 .main-header.scrolled .logo img {
-    height: 72px;
+    height: 110px;
 }
 
 /* Navigation - Hidden by default, shown in overlay */
@@ -172,27 +172,66 @@ body {
 /* Responsive Design - Simplified for Hamburger Menu */
 @media screen and (max-width: 768px) {
     .main-header {
-        padding: 20px 25px;
-        height: 90px;
+        padding: 18px 25px;
+        height: 98px;
     }
     
     .main-header.scrolled {
-        padding: 15px 25px;
-        height: 80px;
+        padding: 14px 25px;
+        height: 88px;
     }
     
     .logo-image,
     .logo img {
-        height: 72px;
+        height: 96px;
     }
     
     .main-header.scrolled .logo-image,
     .main-header.scrolled .logo img {
-        height: 62px;
+        height: 82px;
     }
     
     .main-nav a {
         font-size: 20px;
+    }
+    
+    body {
+        padding-top: 98px;
+    }
+    
+    .back-link {
+        top: calc(98px + 1rem) !important;
+    }
+    
+    .main-header.scrolled ~ * .back-link,
+    .main-header.scrolled + * .back-link {
+        top: calc(88px + 1rem) !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-header {
+        padding: 15px 20px;
+        height: 90px;
+    }
+    
+    .main-header.scrolled {
+        padding: 12px 20px;
+        height: 78px;
+    }
+    
+    .logo-image,
+    .logo img {
+        height: 82px;
+    }
+    
+    .main-header.scrolled .logo-image,
+    .main-header.scrolled .logo img {
+        height: 70px;
+    }
+    
+    .main-nav a {
+        font-size: 18px;
     }
     
     body {
@@ -205,46 +244,7 @@ body {
     
     .main-header.scrolled ~ * .back-link,
     .main-header.scrolled + * .back-link {
-        top: calc(80px + 1rem) !important;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .main-header {
-        padding: 15px 20px;
-        height: 80px;
-    }
-    
-    .main-header.scrolled {
-        padding: 12px 20px;
-        height: 70px;
-    }
-    
-    .logo-image,
-    .logo img {
-        height: 62px;
-    }
-    
-    .main-header.scrolled .logo-image,
-    .main-header.scrolled .logo img {
-        height: 54px;
-    }
-    
-    .main-nav a {
-        font-size: 18px;
-    }
-    
-    body {
-        padding-top: 80px;
-    }
-    
-    .back-link {
-        top: calc(80px + 1rem) !important;
-    }
-    
-    .main-header.scrolled ~ * .back-link,
-    .main-header.scrolled + * .back-link {
-        top: calc(70px + 1rem) !important;
+        top: calc(78px + 1rem) !important;
     }
 }
 

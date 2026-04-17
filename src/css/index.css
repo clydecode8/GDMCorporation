@@ -18,6 +18,11 @@
 /* ===== TYPOGRAPHY ===== */
 .index-page {
   font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-image: url('../assets/commercialhome.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .index-page .index-serif {
@@ -38,7 +43,7 @@
 }
 
 .index-page .scroll-container > .section:nth-of-type(odd) {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .index-page .scroll-container > .section:nth-of-type(even) {
@@ -52,7 +57,7 @@
   display: flex;
   align-items: center;
   padding: var(--section-padding) 5vw;
-  background: var(--index-white);
+  background: rgba(255, 255, 255, 0.6);
   overflow: hidden;
 }
 
@@ -154,7 +159,7 @@
 /* ===== TIMELESSLY MODERN SECTION ===== */
 .index-gallery-section {
   padding: var(--section-padding) 5vw;
-  background: var(--index-white);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .index-gallery-column {
@@ -353,7 +358,7 @@
 /* ===== RENOVATION SERVICES SECTION ===== */
 .index-services-section {
   padding: var(--section-padding) 5vw;
-  background: var(--index-white);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .index-services-layout {
@@ -757,7 +762,20 @@
   }
 
   .index-trusted-logos {
-    gap: 2rem;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 1.25rem;
+    max-width: 100%;
+  }
+
+  .index-trusted-logos a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .index-trusted-logos img {
+    max-height: 120px;
+    max-width: min(82vw, 260px);
   }
 }
 

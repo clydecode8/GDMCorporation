@@ -612,7 +612,7 @@ html, body {
     .scroll-indicator {
         bottom: 2rem;
         position: absolute;
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.6);
         padding: 1rem;
         border-radius: 20px;
         width: auto;
@@ -1660,3 +1660,20 @@ h1, h2, h3, p {
     word-wrap: break-word;
     hyphens: auto;
 } 
+
+/* Unified page background treatment */
+body.project-page {
+    background-image: url('../assets/commercialhome.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.project-page .scroll-container > .section {
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.project-page .scroll-container > .section:nth-of-type(even) {
+    background: #f8f8f8 !important;
+}

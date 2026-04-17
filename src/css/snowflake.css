@@ -855,3 +855,20 @@
         grid-template-columns: repeat(2, 1fr);
     }
 } 
+
+/* Unified page background treatment */
+body.project-page {
+    background-image: url('../assets/commercialhome.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body.project-page .scroll-container > .section {
+    background: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.project-page .scroll-container > .section:nth-of-type(even) {
+    background: #f8f8f8 !important;
+}
