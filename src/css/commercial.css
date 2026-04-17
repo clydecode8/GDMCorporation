@@ -1689,6 +1689,10 @@ body::before {
     transform: rotate(180deg);
 }
 
+.mobile-inline-toggle-btn {
+    display: none;
+}
+
 /* Projects Row Hide/Show Animation */
 .projects-row {
     transition: all 0.5s ease;
@@ -2894,6 +2898,14 @@ body.projects-overlay-open {
         padding-bottom: 52px !important;
     }
 
+    .featured-project .content .cta-group {
+        justify-content: flex-start !important;
+    }
+
+    .featured-project .content .mobile-inline-toggle-btn {
+        align-self: flex-start !important;
+    }
+
     .thumbnail-toggle-container {
         position: fixed !important;
         left: 50% !important;
@@ -2925,6 +2937,15 @@ body.projects-overlay-open {
     .thumbnail-toggle-container {
         margin-top: 0 !important;
         padding-top: 0 !important;
+    }
+
+    .mobile-inline-toggle-btn {
+        display: inline-flex !important;
+        margin-top: 20px !important;
+    }
+
+    #thumbnail-toggle.thumbnail-toggle-container {
+        display: none !important;
     }
 }
 
@@ -3057,6 +3078,27 @@ body.projects-overlay-open {
 
 /* 280x653 and ultra-narrow screens: reduce card/image scale to prevent overflow */
 @media screen and (max-width: 320px) {
+    .featured-project {
+        height: auto !important;
+        min-height: calc(100vh - 90px) !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding-bottom: 14px !important;
+    }
+
+    .featured-project .list .item {
+        align-items: flex-start !important;
+    }
+
+    .featured-project .featured-image {
+        height: min(26vh, 170px) !important;
+        max-height: 170px !important;
+    }
+
+    .featured-project .content .mobile-inline-toggle-btn {
+        margin-top: 8px !important;
+    }
+
     .projects-row:not(.hidden) {
         padding: 52px 14px 6px !important;
     }

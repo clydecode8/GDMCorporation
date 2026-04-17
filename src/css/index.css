@@ -340,7 +340,7 @@
   max-height: 180px;
   max-width: 280px;
   object-fit: contain;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .index-trusted-logos .index-logo-placeholder {
