@@ -2,169 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GDM Corporate - Construction Project</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/construction.css">
-    <link rel="stylesheet" href="../css/components/contact-section.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDM Construction Portfolio</title>
+    <link rel="stylesheet" href="../css/commercial.css">
     <link rel="stylesheet" href="../css/components/header.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="project-page">
-    <!-- Header Navigation Component -->
+<body>
     <div id="header-component"></div>
 
-    <nav class="navigation">
-        <a href="commercial.html" class="back-link">← Back</a>
-    </nav>
-
-    <div class="scroll-container">
-        <!-- Section 1: Hero Section -->
-        <section class="section section-1">
-            <div class="project-content">
-                <div class="project-text" data-aos="fade-right">
-                    <h1 class="project-title">CONSTRUCTION PROJECT</h1>
-                    <p class="project-description">
-                        Our company provides the high quality construction services and so far has worked on building construction especially for commercial and corporate. We specialize in creating modern, functional spaces that meet the highest standards of quality and safety.
-                    </p>
-                    <a href="#section2" class="project-button scroll-btn">PROJECT 10</a>
-                </div>
-                <div class="project-image" data-aos="fade-left">
-                    <img src="../assets/construction1-section1.png" alt="Construction Project">
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <span>Scroll Down</span>
-                <div class="scroll-down-arrow"></div>
-            </div>
-        </section>
-
-        <!-- Section 2: Gallery Section (Layout based on 0036.jpg) -->
-        <section id="section2" class="section section-2">
-            <div class="gallery-container">
-                <div class="section-header" data-aos="fade-up">
-                    <h2 class="section-title">Construction Excellence</h2>
-                    <p class="section-description">
-                        From structural framing to final fit-out, our construction team delivers exceptional quality at every stage of the building process.
-                    </p>
-                </div>
-                <div class="gallery-grid grid-layout-1">
-                    <!-- Column 1: 100% height single photo -->
-                    <div class="gallery-column column-1">
-                        <div class="gallery-item full-height-item" data-aos="fade-up">
-                            <img src="../assets/construction1-section2-1.png" alt="Construction Interior 1">
+    <div class="slider">
+        <div class="featured-project">
+            <div class="list">
+                <div class="item active">
+                    <div class="content">
+                        <span class="category">Construction</span>
+                        <h1>GDM CONSTRUCTION</h1>
+                        <p class="description">
+                            High-quality construction delivery for commercial and corporate spaces, from structural works to complete fit-outs.
+                        </p>
+                        <div class="cta-group">
+                            <button class="cta-button primary" onclick="window.location.href='gdm-construction.html'">
+                                <span class="icon">▶</span>View Project
+                            </button>
                         </div>
+                        <button type="button" class="thumbnail-toggle-btn mobile-inline-toggle-btn" onclick="document.getElementById('thumbnail-toggle-btn').click()">
+                            <span class="toggle-icon">▼</span>
+                            <span class="toggle-text">Show Projects</span>
+                        </button>
                     </div>
-                    
-                    <!-- Column 2: 50% 2 photos + 50% 1 photo -->
-                    <div class="gallery-column column-2">
-                        <div class="small-photos-container">
-                            <div class="gallery-item small-item" data-aos="fade-up" data-aos-delay="200">
-                                <img src="../assets/construction1-section2-3.png" alt="Construction Interior 2">
-                            </div>
-                            <div class="gallery-item small-item" data-aos="fade-up" data-aos-delay="300">
-                                <img src="../assets/construction1-section2-4.png" alt="Construction Interior 3">
-                            </div>
-                        </div>
-                        <div class="gallery-item large-item" data-aos="fade-up" data-aos-delay="400">
-                            <img src="../assets/construction1-section2-2.png" alt="Construction Interior 4">
-                        </div>
+                    <div class="featured-image">
+                        <img src="../assets/construction1-section1.png" alt="Construction Project">
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Contact section component -->
-        <section id="contact-section-container" style="--contact-bg-color: #fff"></section>
+        <div class="projects-row hidden" id="projects-row">
+            <button class="close-projects-btn" id="close-projects-btn">×</button>
+            <div class="thumbnail-container">
+                <div class="thumbnail">
+                    <a class="item active" data-index="0" href="gdm-construction.html">
+                        <img src="../assets/construction1-section1.png" alt="GDM Construction">
+                        <div class="item-content">
+                            <h3>GDM CONSTRUCTION</h3>
+                            <span class="category">Construction</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumbnail-toggle-container" id="thumbnail-toggle">
+            <button class="thumbnail-toggle-btn" id="thumbnail-toggle-btn">
+                <span class="toggle-icon">▼</span>
+                <span class="toggle-text">Show Projects</span>
+            </button>
+        </div>
     </div>
 
-    <script>
-        // Load contact section component
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('../components/contact-section.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    const container = document.getElementById('contact-section-container');
-                    const temp = document.createElement('div');
-                    temp.innerHTML = html;
-                    
-                    const scripts = temp.getElementsByTagName('script');
-                    const scriptContents = [];
-                    
-                    while (scripts.length > 0) {
-                        scriptContents.push(scripts[0].innerHTML);
-                        scripts[0].remove();
-                    }
-                    
-                    container.innerHTML = temp.innerHTML;
-                    
-                    scriptContents.forEach(scriptContent => {
-                        const scriptElement = document.createElement('script');
-                        scriptElement.textContent = scriptContent;
-                        container.appendChild(scriptElement);
-                    });
-
-                    document.querySelectorAll('[data-aos]').forEach((element) => {
-                        observer.observe(element);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error loading contact section:', error);
-                    document.getElementById('contact-section-container').innerHTML = 
-                        '<p style="text-align: center; padding: 2rem;">Error loading contact section. Please try refreshing the page.</p>';
-                });
-        });
-
-        // Load header component
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('../components/header.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    const headerContainer = document.getElementById('header-component');
-                    headerContainer.innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('Error loading header component:', error);
-                    document.getElementById('header-component').innerHTML = 
-                        '<p style="text-align: center; padding: 2rem;">Error loading header. Please try refreshing the page.</p>';
-                });
-        });
-
-        // Scroll button functionality
-        document.querySelectorAll('.scroll-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('[data-aos]').forEach((element) => {
-            observer.observe(element);
-        });
-    </script>
     <script src="../app.js"></script>
+    <script>
+        (function () {
+            try {
+                const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+                const isShort = window.matchMedia('(max-height: 450px)').matches;
+                if (isLandscape && isShort) window.scrollTo(0, 0);
+            } catch (e) {
+                // no-op
+            }
+        })();
+    </script>
 </body>
-</html> 
+</html>

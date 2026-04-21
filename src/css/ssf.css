@@ -1,6 +1,10 @@
 /* SSF Retail Shop Project Page Styles */
 .project-page {
-    background: #fff;
+    background-image: url('../assets/commercialhome.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     width: 100%;
     position: relative;
     overflow-x: hidden;
@@ -24,7 +28,7 @@
 
 .section-1 {
     position: relative;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .project-content {

@@ -6,8 +6,10 @@
     <title>GDM Corporate - Our Services</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/services.css">
+    <link rel="stylesheet" href="../css/components/contact-section.css">
     <link rel="stylesheet" href="../css/components/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="services-page">
     <!-- Header Navigation Component -->
@@ -22,37 +24,41 @@
         <div class="overlay services-overlay"></div>
 
         <main class="services-container">
-            <h1 class="services-title">SERVICES</h1>
-            
+            <p class="services-kicker">OUR SERVICES</p>
             <div class="services-grid">
                 <a href="dream.html?service=commercial" class="service-card" data-page="commercial">
-                    <div class="service-image">
-                        <img src="../assets/commercial.png" alt="Commercial Renovation">
-                    </div>
+                    <img class="service-image" src="../assets/commercial.png" alt="Commercial Renovation">
+                    <div class="service-overlay"></div>
                     <div class="service-content">
-                        <h2>Commercial Renovation</h2>
+                        <span class="service-number">01</span>
+                        <h2>Commercial<br>Renovation</h2>
+                        <span class="service-arrow">→</span>
                     </div>
                 </a>
 
                 <a href="dream.html?service=corporate" class="service-card" data-page="corporate">
-                    <div class="service-image">
-                        <img src="../assets/corporate.png" alt="Corporate Renovation">
-                    </div>
+                    <img class="service-image" src="../assets/corporate.png" alt="Corporate Renovation">
+                    <div class="service-overlay"></div>
                     <div class="service-content">
-                        <h2>Corporate Renovation</h2>
+                        <span class="service-number">02</span>
+                        <h2>Corporate<br>Renovation</h2>
+                        <span class="service-arrow">→</span>
                     </div>
                 </a>
 
                 <a href="dream.html?service=construction" class="service-card" data-page="construction">
-                    <div class="service-image">
-                        <img src="../assets/construction.png" alt="Construction Project">
-                    </div>
+                    <img class="service-image" src="../assets/construction.png" alt="Construction Project">
+                    <div class="service-overlay"></div>
                     <div class="service-content">
-                        <h2>Construction Project</h2>
+                        <span class="service-number">03</span>
+                        <h2>Construction<br>Project</h2>
+                        <span class="service-arrow">→</span>
                     </div>
                 </a>
             </div>
         </main>
+
+        <section id="contact-section-container" style="--contact-bg-color: #f8f8f8"></section>
     </div>
 
     <!-- Loading Screen -->
@@ -64,6 +70,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const serviceCards = document.querySelectorAll('.service-card');
             const loadingScreen = document.querySelector('.loading-screen');
+            const contactContainer = document.getElementById('contact-section-container');
 
             serviceCards.forEach(card => {
                 card.addEventListener('click', function(e) {
@@ -79,6 +86,39 @@
                     }, 1000);
                 });
             });
+
+            fetch('../components/contact-section.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = html;
+
+                    const scripts = temp.getElementsByTagName('script');
+                    const scriptContents = [];
+
+                    while (scripts.length > 0) {
+                        scriptContents.push(scripts[0].innerHTML);
+                        scripts[0].remove();
+                    }
+
+                    contactContainer.innerHTML = temp.innerHTML;
+
+                    scriptContents.forEach(scriptContent => {
+                        const scriptElement = document.createElement('script');
+                        scriptElement.textContent = scriptContent;
+                        contactContainer.appendChild(scriptElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading contact section:', error);
+                    contactContainer.innerHTML =
+                        '<p style="text-align: center; padding: 2rem;">Error loading contact section. Please try refreshing the page.</p>';
+                });
         });
     </script>
     <script src="../app.js"></script>

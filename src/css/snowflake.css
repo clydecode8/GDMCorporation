@@ -872,3 +872,149 @@ body.project-page .scroll-container > .section {
 body.project-page .scroll-container > .section:nth-of-type(even) {
     background: #f8f8f8 !important;
 }
+
+/* Mobile + Tablet usability overrides */
+@media (max-width: 1024px) {
+    .section-1 {
+        min-height: auto;
+        padding: 5.5rem 0 2rem;
+    }
+
+    .project-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 720px;
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    .project-text {
+        order: 2;
+        padding-right: 0;
+    }
+
+    .project-image {
+        order: 1;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 620px;
+    }
+
+    .project-title {
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+
+    .project-description {
+        margin-bottom: 1.25rem;
+    }
+
+    .project-text,
+    .section-header,
+    .section-description {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section-2 {
+        padding: 3.5rem 0 2.5rem;
+    }
+
+    .gallery-container {
+        padding: 0 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+        padding: 0;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .navigation {
+        padding: 0 1rem;
+    }
+
+    .project-content {
+        padding: 0 0.9rem;
+        gap: 1.2rem;
+    }
+
+    .project-title {
+        font-size: clamp(1.9rem, 8vw, 2.5rem);
+    }
+
+    .project-description,
+    .section-description {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
+
+    .project-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 240px;
+        min-height: 44px;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .project-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .gallery-wrapper {
+        padding: 0;
+    }
+
+    .first-row,
+    .second-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+        height: auto;
+        margin-bottom: 0.9rem;
+    }
+
+    .gallery-item,
+    .first-row .gallery-item,
+    .second-row .gallery-item,
+    .left-span,
+    .right-span {
+        width: 100% !important;
+        height: 190px !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+    .section-1 {
+        padding-top: 4.5rem;
+    }
+
+    .project-content {
+        gap: 1rem;
+    }
+
+    .project-image {
+        max-width: 430px;
+    }
+
+    .gallery-item,
+    .first-row .gallery-item,
+    .second-row .gallery-item {
+        height: 170px !important;
+    }
+}

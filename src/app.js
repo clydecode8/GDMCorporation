@@ -430,6 +430,28 @@ function initThumbnailToggle() {
     setProjectsVisibility(false);
 }
 
+// Make all back links behave like browser back.
+function initBackLinkBehavior() {
+    const backLinks = document.querySelectorAll('.back-link');
+    if (backLinks.length === 0) return;
+
+    backLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            if (window.history.length > 1) {
+                window.history.back();
+                return;
+            }
+
+            const fallbackHref = link.getAttribute('href');
+            if (fallbackHref) {
+                window.location.href = fallbackHref;
+            }
+        });
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     // Load header component first
@@ -439,6 +461,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initCarousel();
     initDragScroll();
     initThumbnailToggle();
+    initBackLinkBehavior();
 });
 
 // Pause auto-slide when page is not visible

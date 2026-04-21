@@ -2,41 +2,159 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GDM Corporate - Corporate Renovation</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/dream.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDM Corporate Portfolio</title>
+    <link rel="stylesheet" href="../css/commercial.css">
     <link rel="stylesheet" href="../css/components/header.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="dream-page">
-    <!-- Header Navigation Component -->
+<body>
     <div id="header-component"></div>
 
-    <nav class="navigation">
-        <a href="services.html" class="back-link">← Back</a>
-    </nav>
-
-    <div class="page-wrapper">
-        <div class="hero-bg dream-bg"></div>
-        <div class="overlay dream-overlay"></div>
-
-        <main class="dream-container">
-            <div class="dream-content">
-                <div class="dream-text">
-                    <h1>Get your <span class="highlight">dream office</span> with the help of our highly experienced group of builders & designer.</h1>
-                </div>
-                <div class="dream-images">
-                    <div class="image-container left">
-                        <img src="../assets/dreamspace.png" alt="Modern Office Space Design" class="dream-image">
+    <div class="slider">
+        <div class="featured-project">
+            <div class="list">
+                <div class="item active">
+                    <div class="content">
+                        <span class="category">Corporate Design</span>
+                        <h1>STEELCASE</h1>
+                        <p class="description">
+                            An open-space corporate office with showroom integration, natural textures, and a modern collaborative working concept.
+                        </p>
+                        <div class="cta-group">
+                            <button class="cta-button primary" onclick="window.location.href='steelcase.html'">
+                                <span class="icon">▶</span>View Project
+                            </button>
+                        </div>
+                        <button type="button" class="thumbnail-toggle-btn mobile-inline-toggle-btn" onclick="document.getElementById('thumbnail-toggle-btn').click()">
+                            <span class="toggle-icon">▼</span>
+                            <span class="toggle-text">Show Projects</span>
+                        </button>
                     </div>
-                    <div class="image-container right">
-                        <img src="../assets/dreamspace2.png" alt="Luxurious Corporate Interior" class="dream-image">
+                    <div class="featured-image">
+                        <img src="../assets/steelcase-section1.png" alt="Steelcase">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="content">
+                        <span class="category">Corporate Fit-Out</span>
+                        <h1>WH ELECTRICAL</h1>
+                        <p class="description">
+                            Industrial-inspired office fit-out focused on exposed material finishes, efficiency, and practical day-to-day workspace flow.
+                        </p>
+                        <div class="cta-group">
+                            <button class="cta-button primary" onclick="window.location.href='whelec.html'">
+                                <span class="icon">▶</span>View Project
+                            </button>
+                        </div>
+                        <button type="button" class="thumbnail-toggle-btn mobile-inline-toggle-btn" onclick="document.getElementById('thumbnail-toggle-btn').click()">
+                            <span class="toggle-icon">▼</span>
+                            <span class="toggle-text">Show Projects</span>
+                        </button>
+                    </div>
+                    <div class="featured-image">
+                        <img src="../assets/whelec-section1.png" alt="WH Electrical">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="content">
+                        <span class="category">Headquarters Office</span>
+                        <h1>Miniso HQ</h1>
+                        <p class="description">
+                            A unique headquarters office concept combining corporate function with warm timber-and-steel interior character.
+                        </p>
+                        <div class="cta-group">
+                            <button class="cta-button primary" onclick="window.location.href='minisohq.html'">
+                                <span class="icon">▶</span>View Project
+                            </button>
+                        </div>
+                        <button type="button" class="thumbnail-toggle-btn mobile-inline-toggle-btn" onclick="document.getElementById('thumbnail-toggle-btn').click()">
+                            <span class="toggle-icon">▼</span>
+                            <span class="toggle-text">Show Projects</span>
+                        </button>
+                    </div>
+                    <div class="featured-image">
+                        <img src="../assets/minisohq-section1.png" alt="MINISO HQ">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="content">
+                        <span class="category">Corporate Retail</span>
+                        <h1>SSF</h1>
+                        <p class="description">
+                            A modern chic retail interior project combining classic material palettes with a clean, contemporary shopping environment.
+                        </p>
+                        <div class="cta-group">
+                            <button class="cta-button primary" onclick="window.location.href='ssf.html'">
+                                <span class="icon">▶</span>View Project
+                            </button>
+                        </div>
+                        <button type="button" class="thumbnail-toggle-btn mobile-inline-toggle-btn" onclick="document.getElementById('thumbnail-toggle-btn').click()">
+                            <span class="toggle-icon">▼</span>
+                            <span class="toggle-text">Show Projects</span>
+                        </button>
+                    </div>
+                    <div class="featured-image">
+                        <img src="../assets/ssf-section1.png" alt="SSF">
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+
+        <div class="projects-row hidden" id="projects-row">
+            <button class="close-projects-btn" id="close-projects-btn">×</button>
+            <div class="thumbnail-container">
+                <div class="thumbnail">
+                    <a class="item active" data-index="0" href="steelcase.html">
+                        <img src="../assets/steelcase-section1.png" alt="Steelcase">
+                        <div class="item-content">
+                            <h3>STEELCASE</h3>
+                            <span class="category">Corporate Design</span>
+                        </div>
+                    </a>
+                    <a class="item" data-index="1" href="whelec.html">
+                        <img src="../assets/whelec-section1.png" alt="WH Electrical">
+                        <div class="item-content">
+                            <h3>WH ELECTRICAL</h3>
+                            <span class="category">Corporate Fit-Out</span>
+                        </div>
+                    </a>
+                    <a class="item" data-index="2" href="minisohq.html">
+                        <img src="../assets/minisohq-section1.png" alt="MINISO HQ">
+                        <div class="item-content">
+                            <h3>Miniso HQ</h3>
+                            <span class="category">Headquarters Office</span>
+                        </div>
+                    </a>
+                    <a class="item" data-index="3" href="ssf.html">
+                        <img src="../assets/ssf-section1.png" alt="SSF">
+                        <div class="item-content">
+                            <h3>SSF Retail Shop</h3>
+                            <span class="category">Corporate Retail</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumbnail-toggle-container" id="thumbnail-toggle">
+            <button class="thumbnail-toggle-btn" id="thumbnail-toggle-btn">
+                <span class="toggle-icon">▼</span>
+                <span class="toggle-text">Show Projects</span>
+            </button>
+        </div>
     </div>
+
     <script src="../app.js"></script>
+    <script>
+        (function () {
+            try {
+                const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+                const isShort = window.matchMedia('(max-height: 450px)').matches;
+                if (isLandscape && isShort) window.scrollTo(0, 0);
+            } catch (e) {
+                // no-op
+            }
+        })();
+    </script>
 </body>
-</html> 
+</html>
