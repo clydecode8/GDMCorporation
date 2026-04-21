@@ -452,6 +452,76 @@ function initBackLinkBehavior() {
     });
 }
 
+// Open project images in a zoomable lightbox UI.
+function initImageLightbox() {
+    const imageSelectors = [
+        '.featured-image img',
+        '.project-image img',
+        '.gallery-item img',
+        '.mural-item img',
+        '.mural-image img',
+        '.before-image img',
+        '.process-item img',
+        '.showcase-item img',
+        '.grid-item img'
+    ];
+
+    const images = document.querySelectorAll(imageSelectors.join(', '));
+    if (images.length === 0) return;
+
+    let overlay = document.getElementById('image-lightbox-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'image-lightbox-overlay';
+        overlay.className = 'image-lightbox-overlay';
+        overlay.innerHTML = `
+            <button type="button" class="image-lightbox-close" aria-label="Close image preview">×</button>
+            <img class="image-lightbox-image" src="" alt="">
+            <p class="image-lightbox-caption"></p>
+        `;
+        document.body.appendChild(overlay);
+    }
+
+    const lightboxImage = overlay.querySelector('.image-lightbox-image');
+    const lightboxCaption = overlay.querySelector('.image-lightbox-caption');
+    const closeButton = overlay.querySelector('.image-lightbox-close');
+
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.classList.remove('lightbox-open');
+    }
+
+    function openLightbox(sourceImage) {
+        const src = sourceImage.getAttribute('src');
+        const alt = sourceImage.getAttribute('alt') || 'Project image';
+
+        lightboxImage.setAttribute('src', src);
+        lightboxImage.setAttribute('alt', alt);
+        lightboxCaption.textContent = alt;
+
+        overlay.classList.add('active');
+        document.body.classList.add('lightbox-open');
+    }
+
+    images.forEach((image) => {
+        if (image.closest('a') || image.dataset.noLightbox === 'true') return;
+
+        image.classList.add('lightbox-enabled-image');
+        image.addEventListener('click', () => openLightbox(image));
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && overlay.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     // Load header component first
@@ -462,6 +532,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initDragScroll();
     initThumbnailToggle();
     initBackLinkBehavior();
+    initImageLightbox();
 });
 
 // Pause auto-slide when page is not visible
