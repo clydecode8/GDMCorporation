@@ -1,2 +1,2 @@
 # gdmcorporation
-Landing Page for GDM Corporation
+Landing Page for GDM Corporate

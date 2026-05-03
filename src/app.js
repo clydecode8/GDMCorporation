@@ -1,8 +1,20 @@
+// Resolve component paths from repo root (index.html) vs src/html/*.html
+function siteResourcePrefix() {
+    const pathname = window.location.pathname.replace(/\\/g, '/').toLowerCase();
+    return pathname.includes('/src/html/') ? '../' : 'src/';
+}
+
 // Load header component
 async function loadHeaderComponent() {
     try {
-        const response = await fetch('../components/header.html');
-        const headerHTML = await response.text();
+        const response = await fetch(`${siteResourcePrefix()}components/header.html`);
+        let headerHTML = await response.text();
+        if (siteResourcePrefix() === 'src/') {
+            headerHTML = headerHTML
+                .replace(/href="\.\.\/\.\.\/index\.html"/g, 'href="index.html"')
+                .replace(/href="services\.html"/g, 'href="src/html/services.html"')
+                .replace(/\.\.\/assets\//g, 'src/assets/');
+        }
         document.getElementById('header-component').innerHTML = headerHTML;
         
         // Add scroll effect to header after loading
