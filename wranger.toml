@@ -4,3 +4,4 @@ main = "src/worker.js"
 
 [assets]
 directory = "src"
+not_found_handling = "none"
