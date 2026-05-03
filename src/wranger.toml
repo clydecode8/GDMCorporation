@@ -1,6 +1,6 @@
 name = "gdmcorporation"
 compatibility_date = "2026-04-16"
-main = "src/worker.js"
+main = "worker.js"
 
 [assets]
 directory = "src"

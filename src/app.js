@@ -1,7 +1,7 @@
-// Resolve component paths from repo root (index.html) vs src/html/*.html
+// Resolve component paths for src/index.html vs src/html/*.html
 function siteResourcePrefix() {
     const pathname = window.location.pathname.replace(/\\/g, '/').toLowerCase();
-    return pathname.includes('/src/html/') ? '../' : 'src/';
+    return (pathname.includes('/src/html/') || pathname.includes('/html/')) ? '../' : '';
 }
 
 // Load header component
@@ -9,11 +9,11 @@ async function loadHeaderComponent() {
     try {
         const response = await fetch(`${siteResourcePrefix()}components/header.html`);
         let headerHTML = await response.text();
-        if (siteResourcePrefix() === 'src/') {
+        if (siteResourcePrefix() === '') {
             headerHTML = headerHTML
-                .replace(/href="\.\.\/\.\.\/index\.html"/g, 'href="index.html"')
-                .replace(/href="services\.html"/g, 'href="src/html/services.html"')
-                .replace(/\.\.\/assets\//g, 'src/assets/');
+                .replace(/href="\.\.\/index\.html"/g, 'href="index.html"')
+                .replace(/href="services\.html"/g, 'href="html/services.html"')
+                .replace(/\.\.\/assets\//g, 'assets/');
         }
         document.getElementById('header-component').innerHTML = headerHTML;
         
