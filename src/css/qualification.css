@@ -1,156 +1,269 @@
-/* Qualification Page Styles */
+/* Licenses & registration page — aligned with index / contact-section branding */
+
 .qualification-page {
-  background: #fff;
+  background: #fafafa;
   min-height: 100vh;
-  padding-top: 4rem;
   width: 100%;
 }
 
-.qualification-bg {
-  background: url('../assets/GDM-PORTFOLIO.pdf.png') center center/cover no-repeat;
-  opacity: 0.1;
+.qualification-page h2 {
+  font-size: 1.95rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #222222;
+  font-family: inherit;
+  margin: 0;
 }
 
-.qualification-overlay {
-  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
-}
-
-.qualification-layout {
+.qualification-main {
   position: relative;
   z-index: 2;
-  padding: 2rem;
-  max-width: 1400px;
+  max-width: 1180px;
   margin: 0 auto;
-  min-height: calc(100vh - 4rem);
+  padding: 0 1.25rem 3.5rem;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.qual-title,
+.license-doc-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Hero */
+.qual-hero {
+  text-align: center;
+  padding: 2.25rem 0 2.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.qual-eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8d7752;
+}
+
+.qual-title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.qual-lead {
+  margin: 0 auto;
+  max-width: 52ch;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: rgba(30, 30, 30, 0.78);
+}
+
+/* Showcase grid */
+.qual-showcase {
+  padding: 2.5rem 0 1rem;
+}
+
+.qual-showcase-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .qual-showcase-inner {
+    grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* Brand column — reuses .contact-brand-logo, .brand-subtitle, .brand-tagline, .ssm-pill from contact-section.css */
+
+.qual-brand-panel {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem 1.9rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.cidb-pill {
+  margin-top: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.65rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.cidb-pill-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(141, 119, 82, 0.12);
+  color: #6b5a3e;
+  flex-shrink: 0;
+}
+
+.cidb-pill strong {
+  display: block;
+  color: #202020;
+  font-size: 0.9rem;
+  line-height: 1.15;
+}
+
+.cidb-pill span:not(.cidb-pill-icon) {
+  display: block;
+  margin-top: 0.15rem;
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+/* Certificate cards */
+.qual-documents {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  gap: 1.75rem;
+}
+
+.license-doc-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: #fff;
+  border-radius: 16px;
   overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
 }
 
-.qualification-header {
-  padding: 2rem 0;
-  text-align: center;
+@media (min-width: 640px) {
+  .license-doc-card {
+    grid-template-columns: minmax(200px, 42%) 1fr;
+  }
 }
 
-.qualification-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 900;
-  color: #1a1a1a;
-  margin-bottom: 3rem;
-  text-align: center;
+.license-doc-card:hover {
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
-.certificates-container {
+.license-doc-figure {
+  margin: 0;
+  background: linear-gradient(165deg, rgba(250, 248, 244, 1) 0%, rgba(255, 255, 255, 1) 100%);
   display: flex;
-  gap: 2rem;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 2rem;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  min-height: 220px;
+}
+
+.license-doc-image {
   width: 100%;
-  overflow: hidden;
+  max-width: 360px;
+  height: auto;
+  max-height: min(52vh, 440px);
+  object-fit: contain;
 }
 
-.certificate-card {
-    flex: 0 1 600px; /* Increased from 500px by 20% */
-    max-width: 600px;
-    width: 600px;
-    height: 720px; /* Increased from 600px by 20% */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.license-doc-body {
+  padding: 1.35rem 1.35rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.certificate-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+.license-doc-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  background: rgba(141, 119, 82, 0.14);
+  color: #5c4d34;
 }
 
-.certificate-image {
-    max-height: 660px; /* Increased from 550px by 20% */
-    width: auto;
-    object-fit: contain;
+.license-doc-badge--cidb {
+  background: rgba(30, 80, 120, 0.12);
+  color: #1a4a6e;
 }
 
-/* Responsive Adjustments for Qualification Page */
-@media (max-width: 1024px) {
-  .qualification-layout {
-    padding: 1.5rem;
-  }
-
-  .certificates-container {
-    gap: 1.5rem;
-  }
-
-  .certificate-card {
-    flex: 0 1 480px; /* Increased from 400px by 20% */
-    max-width: 480px;
-    width: 480px;
-    height: 600px; /* Increased from 500px by 20% */
-  }
-
-  .certificate-image {
-    max-height: 540px; /* Increased from 450px by 20% */
-  }
+.license-doc-heading {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
 }
 
-@media (max-width: 768px) {
-  .qualification-layout {
-    padding: 1rem;
-  }
-
-  .qualification-title {
-    margin-bottom: 2rem;
-  }
-
-  .certificates-container {
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .certificate-card {
-    flex: 0 1 420px; /* Increased from 350px by 20% */
-    max-width: 420px;
-    width: 420px;
-    height: 540px; /* Increased from 450px by 20% */
-    margin: 0 auto;
-  }
-
-  .certificate-image {
-    max-height: 480px; /* Increased from 400px by 20% */
-    padding: 0.5rem;
-  }
+.license-doc-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(30, 30, 30, 0.78);
 }
 
-@media (max-width: 480px) {
-  .qualification-layout {
-    padding: 0.8rem;
+.license-doc-text strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* Footer strip */
+.qual-footer {
+  margin-top: 2.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.qual-footer-text {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+  color: rgba(30, 30, 30, 0.72);
+}
+
+.qual-footer-link {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #8d7752;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(141, 119, 82, 0.35);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.qual-footer-link:hover,
+.qual-footer-link:focus {
+  color: #6b5a3e;
+  border-bottom-color: rgba(107, 90, 62, 0.5);
+}
+
+@media (max-width: 600px) {
+  .qual-hero {
+    padding: 1.5rem 0 2rem;
   }
 
-  .qualification-title {
-    margin-bottom: 1.5rem;
+  .qual-showcase {
+    padding: 1.75rem 0 0.5rem;
   }
 
-  .certificates-container {
-    padding: 0.8rem;
+  .qual-brand-panel {
+    padding: 1.35rem 1.15rem;
   }
 
-  .certificate-card {
-    flex: 0 1 360px; /* Increased from 300px by 20% */
-    max-width: 360px;
-    width: 360px;
-    height: 480px; /* Increased from 400px by 20% */
-    padding: 1rem;
+  .license-doc-body {
+    padding: 1.15rem 1.1rem 1.35rem;
   }
-
-  .certificate-image {
-    max-height: 420px; /* Increased from 350px by 20% */
-    padding: 0.3rem;
-  }
-} 
+}

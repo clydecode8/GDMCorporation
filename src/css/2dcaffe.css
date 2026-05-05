@@ -612,7 +612,7 @@ html, body {
     .scroll-indicator {
         bottom: 2rem;
         position: absolute;
-        background: rgba(255, 255, 255, 0.6);
+        background: transparent;
         padding: 1rem;
         border-radius: 20px;
         width: auto;

@@ -466,6 +466,12 @@ function initBackLinkBehavior() {
 
 // Open project images in a zoomable lightbox UI.
 function initImageLightbox() {
+    // Lightbox UI relies on common.css for hidden/overlay styles.
+    // Skip initialization on pages that do not load it.
+    const hasCommonStyles = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+        .some((link) => (link.getAttribute('href') || '').includes('common.css'));
+    if (!hasCommonStyles) return;
+
     const imageSelectors = [
         '.featured-image img',
         '.project-image img',

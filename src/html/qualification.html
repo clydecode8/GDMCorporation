@@ -3,39 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="View GDM Corporate qualifications, certifications, and company credentials supporting renovation and construction project delivery.">
-    <link rel="canonical" href="qualification.html">
-  <title>GDM Corporate | Qualifications</title>
+  <meta name="description" content="GDM Corporate Sdn Bhd — SSM registration and CIDB certification, aligned with our homepage credentials.">
+  <link rel="canonical" href="qualification.html">
+  <title>GDM Corporate | Licenses &amp; Registration</title>
   <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/qualification.css">
   <link rel="stylesheet" href="../css/components/header.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/components/contact-section.css">
+  <link rel="stylesheet" href="../css/qualification.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="qualification-page">
-  <!-- Header Navigation Component -->
+<body class="qualification-page project-page">
   <div id="header-component"></div>
 
-  <nav class="navigation">
-    <a href="philosophy.html" class="back-link">← Back</a>
-  </nav>
-  
-  <div class="hero-bg qualification-bg"></div>
-  <div class="overlay qualification-overlay"></div>
-  
-  <div class="qualification-layout">
-    <div class="qualification-header">
-      <h1 class="qualification-title">Our Qualification</h1>
-    </div>
+  <a href="../index.html" class="back-link">← Back</a>
 
-    <div class="certificates-container">
-      <div class="certificate-card">
-        <img src="../assets/ssm.png" alt="SSM Certificate of Incorporation" class="certificate-image">
+  <main class="qualification-main">
+    <header class="qual-hero">
+      <p class="qual-eyebrow">Credentials</p>
+      <h1 class="qual-title">Licensed &amp; registered</h1>
+      <p class="qual-lead">
+        The same registration and certification we highlight on our homepage — SSM company registration and CIDB certification for construction-related delivery in Malaysia.
+      </p>
+    </header>
+
+    <section class="qual-showcase" aria-label="Registration and certification documents">
+      <div class="qual-showcase-inner">
+        <div class="qual-brand-panel">
+          <img class="contact-brand-logo" src="../assets/gdmlogo-transparent.png" alt="GDM Corporate logo">
+          <h2>GDM Corporate Sdn Bhd</h2>
+          <p class="brand-subtitle">RENOVATION &amp; CONSTRUCTION</p>
+          <p class="brand-tagline">
+            Transforming spaces with a unique artistic approach. Licensed and SSM-registered since 2020.
+          </p>
+          <div class="ssm-pill">
+            <span class="ssm-dot" aria-hidden="true"></span>
+            <div>
+              <strong>SSM Registered</strong>
+              <span>202001029033 (1383351-P)</span>
+            </div>
+          </div>
+          <div class="cidb-pill" role="note">
+            <span class="cidb-pill-icon" aria-hidden="true"><i class="fas fa-hard-hat"></i></span>
+            <div>
+              <strong>CIDB — Grade G7</strong>
+              <span>Construction Industry Development Board registration (certificate below)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="qual-documents">
+          <article class="license-doc-card">
+            <figure class="license-doc-figure">
+              <img src="../assets/ssm.png" alt="SSM Certificate of Incorporation for GDM Corporate Sdn Bhd" class="license-doc-image">
+            </figure>
+            <div class="license-doc-body">
+              <span class="license-doc-badge">SSM</span>
+              <h3 class="license-doc-heading">Certificate of incorporation</h3>
+              <p class="license-doc-text">
+                Official company registration with Suruhanjaya Syarikat Malaysia (SSM). Registration number matches our homepage contact section: <strong>202001029033 (1383351-P)</strong>.
+              </p>
+            </div>
+          </article>
+
+          <article class="license-doc-card">
+            <figure class="license-doc-figure">
+              <img src="../assets/cidb.png" alt="CIDB registration certificate" class="license-doc-image">
+            </figure>
+            <div class="license-doc-body">
+              <span class="license-doc-badge license-doc-badge--cidb">CIDB</span>
+              <h3 class="license-doc-heading">Construction registration</h3>
+              <p class="license-doc-text">
+                Construction Industry Development Board (CIDB) certification — supporting our capability to deliver renovation and construction projects across scales, in line with our CIDB-certified operations described on our About page.
+              </p>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="certificate-card">
-        <img src="../assets/cidb.png" alt="CIDB Registration Certificate" class="certificate-image">
-      </div>
-    </div>
-  </div>
+    </section>
+
+    <footer class="qual-footer">
+      <p class="qual-footer-text">Want to verify details or start a project?</p>
+      <a href="../index.html" class="qual-footer-link">Back to homepage</a>
+    </footer>
+  </main>
+
   <script src="../app.js"></script>
 </body>
-</html> 
+</html>
