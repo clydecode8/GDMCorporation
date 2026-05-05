@@ -480,6 +480,7 @@ function initImageLightbox() {
         '.mural-image img',
         '.before-image img',
         '.process-item img',
+        '.section3-item img',
         '.showcase-item img',
         '.grid-item img'
     ];
