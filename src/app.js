@@ -488,6 +488,18 @@ function initImageLightbox() {
     const images = document.querySelectorAll(imageSelectors.join(', '));
     if (images.length === 0) return;
 
+    // Show one zoom hint on project detail pages (excluding homepage).
+    const isProjectDetailPage =
+        document.body.classList.contains('project-page') &&
+        !document.body.classList.contains('index-page');
+    if (isProjectDetailPage && !document.querySelector('.zoom-hint-badge')) {
+        const hint = document.createElement('div');
+        hint.className = 'zoom-hint-badge';
+        hint.setAttribute('aria-hidden', 'true');
+        hint.innerHTML = '<span class="zoom-hint-icon">+</span><span>Click image to zoom in</span>';
+        document.body.appendChild(hint);
+    }
+
     let overlay = document.getElementById('image-lightbox-overlay');
     if (!overlay) {
         overlay = document.createElement('div');
